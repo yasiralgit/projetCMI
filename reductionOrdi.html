@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>RÉDUCTION D'EXPRESSIONS BOOLÉENNES</h1>
-        <form method="get">
+        <form>
             <div>
                 <label for="expressionAReduire">Saisissez une expression à réduire :</label>
                 <input type="text" name="exprU" id="exprU" placeholder="ie. !A.!B.!C + !A.B.!C + A.!B.C..." required="required"/>
@@ -20,47 +20,8 @@
             </div>
         
             <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>AB\CD</th>
-                        <th>00</th>
-                        <th>01</th>
-                        <th>11</th>
-                        <th>10</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>00</th>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <th>01</th>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <th>11</th>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <th>10</th>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                    </tr>                      
-                </tbody>
-            </table>
+                <table id="tableKar"></table>
+            
         </form>
     </div>  
 
