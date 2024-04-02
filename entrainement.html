@@ -1,69 +1,34 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/style.css" />
-    <script src="entrainement.js" defer></script>
-    <title>Entrainement</title>
-</head>
-<body>
-    <form></form>
-    <div class="Premiere-partie">
-        <h1><center>Entrainement</center></h1>
-            <p> Réduisez cette expression : !A.!B.!C + !A.B.!C + !A.B.C <button type='submit' name='case' value=$key>CHANGER</button></p>
-            <input type="text" placeholder="i.e. !A.!B.!C + !A.B.!C + !A.B.C ..."> <button type='submit' name='case' value=$key>CORRECTION</button></p>
-            <br>
-            <label for="choix1"><small>Afficher la correction par table de Karnaugh</small><input type="checkbox" name="choix[]" value="karnaugh" required></label><br>
-            <label for="choix2"><small>Afficher la correction par les propriétés utilisés</small><input type="checkbox" name="choix[]" value="bool" required></label><br>
-    </div>
 
-    <div class="Karnaugh">
-        <table>
-            <caption>
-                <h3>Exemple : S = B + !A.C.D</h3>
-            </caption>
-            <thead>
-              <tr>
-                <th scope="col">AB/CD</th>
-                <th scope="col">00</th>
-                <th scope="col">01</th>
-                <th scope="col">11</th>
-                <th scope="col">10</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">00</th>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <th scope="row">01</th>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <th scope="row">11</th>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <th scope="row">10</th>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-              </tr>
-            </tbody>
-          </table>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style/style.css" />
+  <script src="entrainement.js" defer></script>
+  <title>Entrainement</title>
+</head>
+
+<body>
+  <form>
+    <div class="Premiere-partie">
+      <h1>
+        <center>Entrainement</center>
+      </h1>
+      <label> Réduisez cette expression : </label> <label for="exp" id="exp"></label><button type='submit'
+        onclick="changerExp()" name='case' value=$key>CHANGER</button> <br>
+      <input type="text" placeholder="i.e. !A.!B.!C + !A.B.!C + !A.B.C ..." name="expin" id="expin"> <button onclick="affExp()" type='submit' name='correc'
+        >CORRECTION</button></p><label for="correcExp" id="correcExp"></label>
+      <br>
+      <label for="choix1"><small>Afficher la correction par table de Karnaugh</small><input type="checkbox"
+          name="choix[]" value="karnaugh" ></label><br>
+      <label for="choix2"><small>Afficher la correction par les propriétés utilisés</small><input type="checkbox"
+          name="choix[]" value="bool" ></label><br>
+          <label for="choix2"><small>Afficher un exemple </small><input type="checkbox" onchange="afficheTab(this)" 
+            name="choix[]" value="bool" ></label><br>
     </div>
-    </form>
+    <div id="tabExp"></div>
+  </form>
 </body>
+
 </html>
