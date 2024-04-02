@@ -8,16 +8,16 @@
     <title>Entrainement</title>
 </head>
 <body>
-    <form name="fent">
-    <h1><center>Entrainement</center></h1>
-    <div>
-        <p> Réduisez cette expression : !A.!B.!C + !A.B.!C + !A.B.C <button type='submit' name='case' value=$key>CHANGER</button></p>
-        <input type="text" placeholder="i.e. !A.!B.!C + !A.B.!C + !A.B.C ..."> <button type='submit' name='case' value=$key>CORRECTION</button></p>
-        <br>
-        <label for="choix1"><small>Afficher la correction par table de Karnaugh</small><input type="checkbox" name="choix[]" value="karnaugh" required></label><br>
-        <label for="choix2"><small>Afficher la correction par les propriétés utilisés</small><input type="checkbox" name="choix[]" value="bool" required></label><br>
+    <form></form>
+    <div class="Premiere-partie">
+        <h1><center>Entrainement</center></h1>
+            <p> Réduisez cette expression : !A.!B.!C + !A.B.!C + !A.B.C <button type='submit' name='case' value=$key>CHANGER</button></p>
+            <input type="text" placeholder="i.e. !A.!B.!C + !A.B.!C + !A.B.C ..."> <button type='submit' name='case' value=$key>CORRECTION</button></p>
+            <br>
+            <label for="choix1"><small>Afficher la correction par table de Karnaugh</small><input type="checkbox" name="choix[]" value="karnaugh" required></label><br>
+            <label for="choix2"><small>Afficher la correction par les propriétés utilisés</small><input type="checkbox" name="choix[]" value="bool" required></label><br>
     </div>
-    <br>
+
     <div class="Karnaugh">
         <table>
             <caption>
