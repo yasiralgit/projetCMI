@@ -3,61 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Résolution d'expressions</title>
+    <title>Réduction d'expressions</title>
     <link rel="stylesheet" href="stylePRes.css" />
+    <script src="redOrdi.js"></script>
 </head>
 <body>
     <h1>RÉDUCTION D'EXPRESSIONS BOOLÉENNES</h1>
-    <form method="get">
-        <label for="expressionAReduire">Saisissez une expression à réduire :</label>
-        <input type="text" name="exprU" id="exprU" placeholder="ie. !A.!B.!C + !A.B.!C + A.!B.C..." required="required"/>
-        <button type="submit" name="exprU" value="resU">RÉDUCTION</button><br>
-        <label for="ue">Choisir le procédé de résolution:</label><br>
-        <input type="checkbox" name="correK" id="correK" >
-        <label for="correK">Affichage des tables de Karnaugh</label>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>AB\CD</th>
-                    <th>00</th>
-                    <th>01</th>
-                    <th>11</th>
-                    <th>10</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>00</th>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <th>01</th>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <th>11</th>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <th>10</th>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                </tr>                      
-            </tbody>
-        </table>
-    </form>
+        <form method="get">
+            <div>
+                <label for="expressionAReduire">Saisissez une expression à réduire :</label>
+                <input type="text" name="exprU" id="exprU" placeholder="ie. !A.!B.!C + !A.B.!C + A.!B.C..." required="required"/>
+                <button onclick="affichageTabK()">RÉDUCTION</button><br>
+                <label for="ue">Choisir le procédé de résolution:</label><br>
+                <input type="checkbox" name="correK" id="correK">
+                <label for="correK">Affichage des tables de Karnaugh</label>
+            </div>
+        
+            <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>AB\CD</th>
+                        <th>00</th>
+                        <th>01</th>
+                        <th>11</th>
+                        <th>10</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>00</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>01</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>11</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>10</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>                      
+                </tbody>
+            </table>
+        </form>
+    </div>  
 
 </body>
 </html>
