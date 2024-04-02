@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css" />
+    <script src="entrainement.js" defer></script>
+    <title>Entrainement</title>
+</head>
+<body>
+    <form name="fent">
+    <h1><center>Entrainement</center></h1>
+    <div>
+        <p> Réduisez cette expression : !A.!B.!C + !A.B.!C + !A.B.C <button type='submit' name='case' value=$key>CHANGER</button></p>
+        <input type="text" placeholder="i.e. !A.!B.!C + !A.B.!C + !A.B.C ..."> <button type='submit' name='case' value=$key>CORRECTION</button></p>
+        <br>
+        <label for="choix1"><small>Afficher la correction par table de Karnaugh</small><input type="checkbox" name="choix[]" value="karnaugh" required></label><br>
+        <label for="choix2"><small>Afficher la correction par les propriétés utilisés</small><input type="checkbox" name="choix[]" value="bool" required></label><br>
+    </div>
+    <br>
+    <div class="Karnaugh">
+        <table>
+            <caption>
+                <h3>S = B + !A.C</h3>
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">AB/CD</th>
+                <th scope="col">00</th>
+                <th scope="col">01</th>
+                <th scope="col">11</th>
+                <th scope="col">10</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">00</th>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <th scope="row">01</th>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <th scope="row">11</th>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <th scope="row">10</th>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    </form>
+</body>
+</html>
