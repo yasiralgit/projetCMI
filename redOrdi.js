@@ -28,14 +28,13 @@ function recupExpr() {
 }
 
 function affichageTabK() {
+    $("#tableKar") = "";
     const cb = document.getElementById("correK").checked;
     const exp = recupExpr();
     if (cb == true){
-        if (exp == ''){
-            console.log('tabK vide');
-        }
-        else{
-            console.log('tabk')
+        if (exp != ''){
+            $("#tableKar").append("<thead><tr><th>AB\CD</th><th>00</th><th>01</th><th>11</th><th>10</th></tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><th>01</th><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><th>11</th><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><th>10</th><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody>");
+            console.log("<thead><tr><th>AB\CD</th><th>00</th><th>01</th><th>11</th><th>10</th></tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><th>01</th><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><th>11</th><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><th>10</th><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody>");
         }
     }
 }
