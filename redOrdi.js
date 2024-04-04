@@ -13,7 +13,12 @@ class Logique {
     }
 
     OU(){
-        return ([this.x]).concat(["+"].concat([this.y]))
+        if((this.y)[0].constructor.name == "Array"){
+            return ([this.x]).concat(["+"].concat(this.y))
+        }
+        else{
+            return ([this.x]).concat(["+"].concat([this.y]))
+        }
     }
 
     NOT(){
@@ -22,6 +27,36 @@ class Logique {
 }
 
 // sortie devrait être [["!A","B","C","D"],"+",["!A","!B","C","!D"],"+",["A","B","C","D"]]
+
+class Logique2 {
+    constructor(x,y=""){
+        this.x = x
+        this.y = y
+    }
+
+    VAR(){
+        return "1"
+    }
+
+    ET(){
+        return this.x+this.y
+    }
+
+    OU(){
+        if(typeof this.y === 'string'){
+            return ([this.x]).concat(["+"].concat([this.y]))
+        }
+        else{
+            return ([this.x]).concat(["+"].concat(this.y))
+        }
+    }
+
+    NOT(){
+        return "0"
+    }
+}
+
+// sortie devrait être ["0111","+","0010","+","1111"]
 
 document.addEventListener("onclick", affichageTabK);
 
@@ -83,7 +118,7 @@ function sectET(expr){
     return sousProds
 }
 
-test = "!A.B.C.D + !A.!B.C.!D + A.B.C.D"
+test = "!A.B.C.D + !A.!B.C.!D + A.B.C.D + A.B.!C.D"
 function tabExpr(expr){
     if (prod(expr)){
         sp = sectET(expr);
@@ -94,15 +129,39 @@ function tabExpr(expr){
         return new Logique(new Logique(new Logique(a).VAR(),new Logique(b).VAR()).ET(),new Logique(new Logique(c).VAR(),new Logique(d).VAR()).ET()).ET()
     }
     else{
-        console.log("on a pas tous les sous-produits");
+        //console.log("on a pas tous les sous-produits");
         sousProd = sectOU(expr);
-        console.log(sousProd[0]);
-        console.log(sousProd[1]);
+        //console.log(sousProd[0]);
+        //console.log(sousProd[1]);
         return new Logique(tabExpr(sousProd[0]),tabExpr(sousProd[1])).OU()
     }
 }
 
-console.log(tabExpr(test));
+function tabExpr2(expr){
+    if (prod(expr)){
+        sp = sectET(expr);
+        for (let i = 0;i<sp.length;i+=1){
+            if (sp[i][0] == "!"){
+                sp[i] = new Logique2(sp[i]).NOT();
+            }
+            else{
+                sp[i] = new Logique2(sp[i]).VAR();
+            }
+        }
+        console.log(sp);
+        return new Logique2(new Logique2(sp[0],sp[1]).ET(),new Logique2(sp[2],sp[3]).ET()).ET()
+    }
+    else{
+        //console.log("on a pas tous les sous-produits");
+        sousProd = sectOU(expr);
+        //console.log(sousProd[0]);
+        //console.log(sousProd[1]);
+        return new Logique2(tabExpr2(sousProd[0]),tabExpr2(sousProd[1])).OU()
+    }
+}
+
+console.log("logique 1",tabExpr(test));
+console.log("logique 2",tabExpr2(test));
 // sortie devrait être [["!A","B","C","D"],"+",["!A","!B","C","!D"],"+",["A","B","C","D"]]
 
 function tabK(tExpr){
