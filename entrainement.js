@@ -1,3 +1,4 @@
+
 class Logique {
     constructor(x,y=""){
         this.x = x
@@ -67,33 +68,85 @@ var expressionsSimp = [
     "A.!B.C + !A.C.D",
     "A.B.!C + !A.C.D"
 ]
-var id = Math.floor(Math.random() * 7);
-console.log(id)
-expdeb.innerHTML = expressions[id] +" "
+var expressionsKarnaugh = [
+    "     <table><caption><h3> S = B + !A.C.D</h3></caption><thead><tr><th scope='col'>AB/CD</th><th scope='col'>00</th><th scope='col'>01</th><th scope='col'>11</th><th scope='col'>10</th>    </tr>  </thead>  <tbody>    <tr>      <th scope='row'>00</th>      <td>0</td>      <td>0</td>      <td>1</td>      <td>0</td>    </tr>    <tr>      <th scope='row'>01</th>      <td>1</td>      <td>1</td>      <td>1</td>      <td>1</td>    </tr>    <tr>      <th scope='row'>11</th>      <td>1</td>      <td>1</td>      <td>1</td>      <td>1</td>    </tr>    <tr>      <th scope='row'>10</th>      <td>0</td>      <td>0</td>      <td>0</td>      <td>0</td>    </tr>  </tbody></table>",
+    "     <table><caption><h3> S = A + !A.C.D</h3></caption><thead><tr><th scope='col'>AB/CD</th><th scope='col'>00</th><th scope='col'>01</th><th scope='col'>11</th><th scope='col'>10</th>    </tr>  </thead>  <tbody>    <tr>      <th scope='row'>00</th>      <td>0</td>      <td>0</td>      <td>1</td>      <td>0</td>    </tr>    <tr>      <th scope='row'>01</th>      <td>1</td>      <td>1</td>      <td>1</td>      <td>1</td>    </tr>    <tr>      <th scope='row'>11</th>      <td>1</td>      <td>1</td>      <td>1</td>      <td>1</td>    </tr>    <tr>      <th scope='row'>10</th>      <td>0</td>      <td>0</td>      <td>0</td>      <td>0</td>    </tr>  </tbody></table>",
+    "     <table><caption><h3> S = C + !A.C.D</h3></caption><thead><tr><th scope='col'>AB/CD</th><th scope='col'>00</th><th scope='col'>01</th><th scope='col'>11</th><th scope='col'>10</th>    </tr>  </thead>  <tbody>    <tr>      <th scope='row'>00</th>      <td>0</td>      <td>0</td>      <td>1</td>      <td>0</td>    </tr>    <tr>      <th scope='row'>01</th>      <td>1</td>      <td>1</td>      <td>1</td>      <td>1</td>    </tr>    <tr>      <th scope='row'>11</th>      <td>1</td>      <td>1</td>      <td>1</td>      <td>1</td>    </tr>    <tr>      <th scope='row'>10</th>      <td>0</td>      <td>0</td>      <td>0</td>      <td>0</td>    </tr>  </tbody></table>",
+    "     <table><caption><h3> S = A.B.C + !A.C.D</h3></caption><thead><tr><th scope='col'>AB/CD</th><th scope='col'>00</th><th scope='col'>01</th><th scope='col'>11</th><th scope='col'>10</th>    </tr>  </thead>  <tbody>    <tr>      <th scope='row'>00</th>      <td>0</td>      <td>0</td>      <td>1</td>      <td>0</td>    </tr>    <tr>      <th scope='row'>01</th>      <td>1</td>      <td>1</td>      <td>1</td>      <td>1</td>    </tr>    <tr>      <th scope='row'>11</th>      <td>1</td>      <td>1</td>      <td>1</td>      <td>1</td>    </tr>    <tr>      <th scope='row'>10</th>      <td>0</td>      <td>0</td>      <td>0</td>      <td>0</td>    </tr>  </tbody></table>",
+    "     <table><caption><h3> S = B.C + !A.C.D</h3></caption><thead><tr><th scope='col'>AB/CD</th><th scope='col'>00</th><th scope='col'>01</th><th scope='col'>11</th><th scope='col'>10</th>    </tr>  </thead>  <tbody>    <tr>      <th scope='row'>00</th>      <td>0</td>      <td>0</td>      <td>1</td>      <td>0</td>    </tr>    <tr>      <th scope='row'>01</th>      <td>1</td>      <td>1</td>      <td>1</td>      <td>1</td>    </tr>    <tr>      <th scope='row'>11</th>      <td>1</td>      <td>1</td>      <td>1</td>      <td>1</td>    </tr>    <tr>      <th scope='row'>10</th>      <td>0</td>      <td>0</td>      <td>0</td>      <td>0</td>    </tr>  </tbody></table>",
+    "     <table><caption><h3> S = !A.B.C + !A.C.D</h3></caption><thead><tr><th scope='col'>AB/CD</th><th scope='col'>00</th><th scope='col'>01</th><th scope='col'>11</th><th scope='col'>10</th>    </tr>  </thead>  <tbody>    <tr>      <th scope='row'>00</th>      <td>0</td>      <td>0</td>      <td>1</td>      <td>0</td>    </tr>    <tr>      <th scope='row'>01</th>      <td>1</td>      <td>1</td>      <td>1</td>      <td>1</td>    </tr>    <tr>      <th scope='row'>11</th>      <td>1</td>      <td>1</td>      <td>1</td>      <td>1</td>    </tr>    <tr>      <th scope='row'>10</th>      <td>0</td>      <td>0</td>      <td>0</td>      <td>0</td>    </tr>  </tbody></table>",
+    "     <table><caption><h3> S = A.!B.C + !A.C.D</h3></caption><thead><tr><th scope='col'>AB/CD</th><th scope='col'>00</th><th scope='col'>01</th><th scope='col'>11</th><th scope='col'>10</th>    </tr>  </thead>  <tbody>    <tr>      <th scope='row'>00</th>      <td>0</td>      <td>0</td>      <td>1</td>      <td>0</td>    </tr>    <tr>      <th scope='row'>01</th>      <td>1</td>      <td>1</td>      <td>1</td>      <td>1</td>    </tr>    <tr>      <th scope='row'>11</th>      <td>1</td>      <td>1</td>      <td>1</td>      <td>1</td>    </tr>    <tr>      <th scope='row'>10</th>      <td>0</td>      <td>0</td>      <td>0</td>      <td>0</td>    </tr>  </tbody></table>",
+    "     <table><caption><h3> S = A.B.!C + !A.C.D</h3></caption><thead><tr><th scope='col'>AB/CD</th><th scope='col'>00</th><th scope='col'>01</th><th scope='col'>11</th><th scope='col'>10</th>    </tr>  </thead>  <tbody>    <tr>      <th scope='row'>00</th>      <td>0</td>      <td>0</td>      <td>1</td>      <td>0</td>    </tr>    <tr>      <th scope='row'>01</th>      <td>1</td>      <td>1</td>      <td>1</td>      <td>1</td>    </tr>    <tr>      <th scope='row'>11</th>      <td>1</td>      <td>1</td>      <td>1</td>      <td>1</td>    </tr>    <tr>      <th scope='row'>10</th>      <td>0</td>      <td>0</td>      <td>0</td>      <td>0</td>    </tr>  </tbody></table>"
+
+]
+bd = {
+    "expression":["!A.!B.!C.!D","A.B.C.D","!A.B.C.D","A.!B.C.D","A.B.!C.D","A.B.C.!D","!A.!B.C.D","!A.B.!C.D","!A.B.C!D","A.!B.!C.D","A.!B.C!D","A.B.!C.!D","!A.!B.!C.D","!A.!B.C.!D","!A.B.!C.!D","A.!B.!C.!D","A.B.C.!D+A.B.C.D"],
+    "expressionsimple":["!A.!B.!C.!D","A.B.C.D","!A.B.C.D","A.!B.C.D","A.B.!C.D","A.B.C.!D","!A.!B.C.D","!A.B.!C.D","!A.B.C!D","A.!B.!C.D","A.!B.C!D","A.B.!C.!D","!A.!B.!C.D","!A.!B.C.!D","!A.B.!C.!D","A.!B.!C.!D","A.B.C"],
+    "theorem":["<ul><li>aucun théoreme</li></ul>","<ul><li>aucun théoreme</li></ul>","<ul><li>aucun théoreme</li></ul>","<ul><li>aucun théoreme</li></ul>","<ul><li>aucun théoreme</li></ul>","<ul><li>aucun théoreme</li></ul>","<ul><li>aucun théoreme</li></ul>","<ul><li>aucun théoreme</li></ul>","<ul><li>aucun théoreme</li></ul>","<ul><li>aucun théoreme</li></ul>","<ul><li>aucun théoreme</li></ul>","<ul><li>aucun théoreme</li></ul>","<ul><li>aucun théoreme</li></ul>","<ul><li>aucun théoreme</li></ul>","<ul><li>aucun théoreme</li></ul>","<ul><li>aucun théoreme</li></ul>","<ul><li>complémentarité,distributivité,élément neutre</li></ul>"],
+    "tablekarnaugh":["<table><thead><tr><th>AB/CD</th><th>00</th><th>01</th><th>11</th><th>10</th> </tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>0</td> </tr><tr><th>01</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>11</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>10</th><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>","<table><thead><tr><th>AB/CD</th><th>00</th><th>01</th><th>11</th><th>10</th> </tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>0</td> </tr><tr><th>01</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>11</th><td>0</td><td>0</td><td>1</td><td>0</td>    </tr><tr><th>10</th><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>","<table><thead><tr><th>AB/CD</th><th>00</th><th>01</th><th>11</th><th>10</th> </tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>0</td> </tr><tr><th>01</th><td>0</td><td>0</td><td>1</td><td>0</td>    </tr><tr><th>11</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>10</th><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>","<table><thead><tr><th>AB/CD</th><th>00</th><th>01</th><th>11</th><th>10</th> </tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>0</td> </tr><tr><th>01</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>11</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>10</th><td>0</td><td>0</td><td>1</td><td>0</td></tr></tbody></table>","<table><thead><tr><th>AB/CD</th><th>00</th><th>01</th><th>11</th><th>10</th> </tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>0</td> </tr><tr><th>01</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>11</th><td>0</td><td>1</td><td>0</td><td>0</td>    </tr><tr><th>10</th><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>","<table><thead><tr><th>AB/CD</th><th>00</th><th>01</th><th>11</th><th>10</th> </tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>0</td> </tr><tr><th>01</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>11</th><td>0</td><td>0</td><td>0</td><td>1</td>    </tr><tr><th>10</th><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>","<table><thead><tr><th>AB/CD</th><th>00</th><th>01</th><th>11</th><th>10</th> </tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>1</td><td>0</td> </tr><tr><th>01</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>11</th><td>0</td><td>0</td><td>1</td><td>0</td>    </tr><tr><th>10</th><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>","<table><thead><tr><th>AB/CD</th><th>00</th><th>01</th><th>11</th><th>10</th> </tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>0</td> </tr><tr><th>01</th><td>0</td><td>1</td><td>0</td><td>0</td>    </tr><tr><th>11</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>10</th><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>","<table><thead><tr><th>AB/CD</th><th>00</th><th>01</th><th>11</th><th>10</th> </tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>0</td> </tr><tr><th>01</th><td>0</td><td>0</td><td>0</td><td>1</td>    </tr><tr><th>11</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>10</th><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>","<table><thead><tr><th>AB/CD</th><th>00</th><th>01</th><th>11</th><th>10</th> </tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>0</td> </tr><tr><th>01</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>11</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>10</th><td>0</td><td>1</td><td>0</td><td>0</td></tr></tbody></table>","<table><thead><tr><th>AB/CD</th><th>00</th><th>01</th><th>11</th><th>10</th> </tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>0</td> </tr><tr><th>01</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>11</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>10</th><td>0</td><td>1</td><td>0</td><td>0</td></tr></tbody></table>","<table><thead><tr><th>AB/CD</th><th>00</th><th>01</th><th>11</th><th>10</th> </tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>0</td> </tr><tr><th>01</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>11</th><td>1</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>10</th><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>","<table><thead><tr><th>AB/CD</th><th>00</th><th>01</th><th>11</th><th>10</th> </tr></thead><tbody><tr><th>00</th><td>0</td><td>1</td><td>0</td><td>0</td> </tr><tr><th>01</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>11</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>10</th><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>","<table><thead><tr><th>AB/CD</th><th>00</th><th>01</th><th>11</th><th>10</th> </tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>1</td> </tr><tr><th>01</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>11</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>10</th><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>","<table><thead><tr><th>AB/CD</th><th>00</th><th>01</th><th>11</th><th>10</th> </tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>0</td> </tr><tr><th>01</th><td>1</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>11</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>10</th><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>","<table><thead><tr><th>AB/CD</th><th>00</th><th>01</th><th>11</th><th>10</th> </tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>0</td> </tr><tr><th>01</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>11</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>10</th><td>1</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>","<table><thead><tr><th>AB/CD</th><th>00</th><th>01</th><th>11</th><th>10</th> </tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>0</td> </tr><tr><th>01</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>11</th><td>0</td><td>0</td><td>1</td><td>1</td>    </tr><tr><th>10</th><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>"]
+}
+var ind = Math.floor(Math.random() * bd.expression.length);
+console.log(ind)
+expdeb.innerHTML = bd.expression[ind]
 function affExp(){
     var expinb = document.getElementById("expin")
     //console.log(expinb.value)
     //console.log(expressions)
     //console.log(expressions.includes(expinb.value))
-    if (expressions[id] == expressionsSimp[id]) {
+    if (expinb == bd.expressionsimple[ind]) {
         console.log("Bravo, vous avez réussi à simplifier l'expression !")
         rep = document.getElementById("correcExp")
-        rep.innerHTML = " " + expressionsSimp[id] + "test"
+        rep.innerHTML = "La bonne simplification est : " + bd.expressionsimple[ind] 
         console.log(rep)
-        console.log(expressionsSimp[id])
+        console.log(ind)
+        console.log(bd.expressionsimple[ind])
     }
     else {
         console.log("Non, c'est un echec !")
         rep = document.getElementById("correcExp")
-        rep.innerHTML = " " + expressionsSimp[id] + "Echec"
+        rep.innerHTML = " La bonne simplification était : " + bd.expressionsimple[ind] 
+        console.log(ind)
+
+    }
+}
+function affKarnaugh(id){
+    var expinb = document.getElementById("expin")
+    //console.log(expinb.value)
+    //console.log(expressions)
+    //console.log(expressions.includes(expinb.value))
+    if (expinb == expressionsSimp[ind]) {
+        console.log("Admissible à la Karnaughisation !")
+        if(id.checked == true){
+            console.log("je suis dans afficher par table de Karnaugh")
+            tabKar = document.getElementById("tabExp")
+            console.log(expressionsKarnaugh[ind])
+            tabKar.innerHTML = expressionsKarnaugh[ind]
+        }else{
+            console.log("je suis dans desafficher par table de Karnaugh")
+            tabKar = document.getElementById("tabExp")
+            tabKar.innerHTML = ""
+       }
+    }
+    else {
+        console.log("Non admissible à la Karnaughisation !")
+        if(id.checked == true){
+            console.log("je suis dans afficher par table de Karnaugh")
+            tabKar = document.getElementById("tabExp")
+            console.log(expressionsKarnaugh[ind])
+            tabKar.innerHTML = expressionsKarnaugh[ind]
+        }else{
+            console.log("je suis dans desafficher par table de Karnaugh")
+            tabKar = document.getElementById("tabExp")
+            tabKar.innerHTML = ""
+       }
 
     }
 }
 
 function changerExp(){
-    var id = Math.floor(Math.random() * 7);
-    console.log(id)
-    expdeb.innerHTML = expressions[id] +" "
+    ind = Math.floor(Math.random() * bd.expression.length);
+    console.log(ind)
+    expdeb.innerHTML = bd.expression[ind]
 }
 
 function afficheTab(id){
@@ -107,5 +160,42 @@ function afficheTab(id){
         tabKar = document.getElementById("tabExp")
         tabKar.innerHTML = ""
    }
-}
 
+
+}
+function kar2exp() {
+    var marTrans = [
+    ['0000','0001','0011','0010'],
+    ['0100','0101','0111','0110'],
+    ['1100','1101','1111','1110'],
+    ['1000','1001','1011','1010']
+    ]
+    var marTEST = [
+    [0,0,0,0],
+    [0,0,1,0],
+    [0,0,1,0],
+    [0,0,0,0]
+    ]
+    var cpt = 0 ; var pos = []  
+    for (let i = 0 ; i<marTEST.length ; i++) {
+        for (let j = 0 ;j < marTEST[i].length ; j++) {
+            if (marTEST[i][j] == 1) {
+                cpt ++ 
+                pos.push(marTrans[i][j])
+            }
+
+        }
+    }
+    console.log(pos)
+    if (pos.length == 1) {
+        return pos[0]
+    }
+    if (pos.length == 2){
+        for (let k = 0 ; k < 4 ; k++){
+            if (pos[0][k] != pos[1][k]) {
+                //ds
+            } 
+        }
+    }
+    
+   }
