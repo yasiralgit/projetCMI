@@ -207,6 +207,51 @@ function tabKStr(tKar){
     return tkStr
 }
 
+//prototype de yasir
+function kar2exp() {
+    var marTrans = [
+    ['0000','0001','0011','0010'],
+    ['0100','0101','0111','0110'],
+    ['1100','1101','1111','1110'],
+    ['1000','1001','1011','1010']
+    ];
+    var marTrad = [
+        ['!A.!B.!C.!D','!A.!B.!C.D','!A.!B.C.D','!A.!B.C.!D'],
+        ['!A.B.!C.!D','!A.B.!C.D','!A.B.C.D','!A.B.C.!D'],
+        ['A.B.!C.!D','A.B.!C.D','A.B.C.D','A.B.C.D'],
+        ['A.!B.!C.!D','A.!B.!C.D','A.!B.C.D','A.!B.C.!D']
+        ];
+    var marTEST = [
+    [0,0,0,0],
+    [0,0,1,0],
+    [0,0,1,0],
+    [0,0,0,0]
+    ];
+    var cpt = 0 ; var pos = [];
+    for (let i = 0 ; i<marTEST.length ; i++) {
+        for (let j = 0 ;j < marTEST[i].length ; j++) {
+            if (marTEST[i][j] == 1) {
+                cpt ++ 
+                pos.push(marTrans[i][j])
+            }
+
+        }
+    }
+    console.log(pos)
+    if (pos.length == 1) {
+        return pos[0]
+    }
+    if (pos.length == 2){
+        for (let k = 0 ; k < 4 ; k++){
+            if (pos[0][k] != pos[1][k]) {
+                //ds
+            } 
+        }
+    }
+    
+   }
+
+
 function test2(){
     //console.log("logique 1",tabExpr(recupExpr()));
     //console.log("logique 2",tabExpr2(recupExpr()));
