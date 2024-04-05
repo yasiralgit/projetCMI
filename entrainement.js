@@ -114,13 +114,13 @@ function affKarnaugh(id){
     //console.log(expinb.value)
     //console.log(expressions)
     //console.log(expressions.includes(expinb.value))
-    if (expinb == expressionsSimp[ind]) {
+    if (expinb == bd.expressionsimple[ind]) {
         console.log("Admissible à la Karnaughisation !")
         if(id.checked == true){
             console.log("je suis dans afficher par table de Karnaugh")
             tabKar = document.getElementById("tabExp")
-            console.log(expressionsKarnaugh[ind])
-            tabKar.innerHTML = expressionsKarnaugh[ind]
+            console.log(bd.tablekarnaugh[ind])
+            tabKar.innerHTML = bd.tablekarnaugh[ind]
         }else{
             console.log("je suis dans desafficher par table de Karnaugh")
             tabKar = document.getElementById("tabExp")
@@ -132,8 +132,8 @@ function affKarnaugh(id){
         if(id.checked == true){
             console.log("je suis dans afficher par table de Karnaugh")
             tabKar = document.getElementById("tabExp")
-            console.log(expressionsKarnaugh[ind])
-            tabKar.innerHTML = expressionsKarnaugh[ind]
+            console.log(bd.tablekarnaugh[ind])
+            tabKar.innerHTML = bd.tablekarnaugh[ind]
         }else{
             console.log("je suis dans desafficher par table de Karnaugh")
             tabKar = document.getElementById("tabExp")

@@ -4,31 +4,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style/style.css" />
-  <script src="entrainement.js" defer></script>
+  <link rel="stylesheet" href="http://localhost:8888/fichier/style.css" />
+  <script src="http://localhost:8888/fichier/entrainement.js" defer></script>
   <title>Entrainement</title>
 </head>
 
 <body>
-  <form>
-    <div class="Premiere-partie">
-      <h1>
-        <center>Entrainement</center>
-      </h1>
-      <label> Réduisez cette expression : </label> <label for="exp" id="exp"></label><button type='submit'
-        onclick="changerExp()" name='case' value=$key>CHANGER</button> <br>
-      <input type="text" placeholder="i.e. !A.!B.!C + !A.B.!C + !A.B.C ..." name="expin" id="expin"> <button onclick="affExp()" type='submit' name='correc'
-        >CORRECTION</button></p><label for="correcExp" id="correcExp"></label>
-      <br>
-      <label for="choix1"><small>Afficher la correction par table de Karnaugh</small><input type="checkbox"
-          name="choix[]" value="karnaugh" ></label><br>
-      <label for="choix2"><small>Afficher la correction par les propriétés utilisés</small><input type="checkbox"
+  <div class="Premiere-partie">
+    <h1>
+      <center>Entrainement</center>
+    </h1>
+    <center><label> Réduisez cette expression : </label> <label for="exp" id="exp"></label><button type='submit'
+      onclick="changerExp()" name='case' value=$key>CHANGER</button> <br>
+    <input type="text" placeholder="i.e. !A.!B.!C + !A.B.!C + !A.B.C ..." name="expin" id="expin"> <button onclick="affExp()" type='button' name='correc'
+      >CORRECTION</button><label for="correcExp" id="correcExp"></label></p>
+    <br>
+    <label for="choix1"><small>Afficher la correction par table de Karnaugh</small><input type="checkbox"
+        name="choix[]" value="karnaugh" onchange="affKarnaugh(this)" ></label><br>
+        <label for="choix2"><small>Afficher un exemple </small><input type="checkbox" onchange="afficheTab(this)" 
           name="choix[]" value="bool" ></label><br>
-          <label for="choix2"><small>Afficher un exemple </small><input type="checkbox" onchange="afficheTab(this)" 
-            name="choix[]" value="bool" ></label><br>
-    </div>
-    <div id="tabExp"></div>
-  </form>
+          <label for="choix2"><small>TEST DE FONCTION </small><input type="checkbox" onchange="kar2exp()" 
+            name="choix[]" value="bool" ></label><br> </center>
+  </div>
+  <div id="tabExp"></div>
 </body>
 
 </html>
