@@ -64,14 +64,14 @@ function recupExpr() {
     return document.getElementById('exprU').value;
 }
 
-function affichageTabK() {
+function affichageTabK(tkS) {
     tkar = "";
     const cb = document.getElementById("correK").checked;
     const exp = recupExpr();
     if (cb == true){
         console.log(cb);
         if (exp != ''){
-            tableKar.innerHTML = "<table><thead><tr><th>AB\CD</th><th>00</th><th>01</th><th>11</th><th>10</th></tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><th>01</th><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><th>11</th><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><th>10</th><td>0</td><td>0</td><td>0</td><td>1</td></tr></tbody></table>"
+            tableKar.innerHTML = tkS;
             console.log("procédé tableau de Karnaugh affiché");
         }
     }
@@ -166,21 +166,21 @@ function tabExpr2(expr){
 // sortie devrait être ["0111","+","0010","+","1111"]
 
 function tabK(tExpr){
-    console.log(tExpr);
+    //console.log(tExpr);
     tabk = [["0000","0001","0011","0010"],
     ["0100","0101","0111","0110"],
     ["1100","1101","1111","1110"],
     ["1000","1001","1011","1010"]];
-    tabKE = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+    tabKE = [["0","0","0","0"],["0","0","0","0"],["0","0","0","0"],["0","0","0","0"]];
     for (let i = 0;i<tExpr.length;i=i+2){
-        console.log("boucle i", i);
+        //console.log("boucle i", i);
         for (let j = 0;j<tabk.length;j=j+1){
-            console.log("boucle j", j);
+            //console.log("boucle j", j);
             for (let k = 0;k<tabk[j].length;k=k+1){
-                console.log("tExpr et tabK = ", tExpr[i], tabk[j][k]);
+                //console.log("tExpr et tabK = ", tExpr[i], tabk[j][k]);
                 if (tExpr[i] == tabk[j][k]){
-                    tabKE[j][k] = 1;
-                    console.log("normalement 1");
+                    tabKE[j][k] = "1";
+                    //console.log("normalement 1");
                 }
             } 
         }
@@ -188,8 +188,30 @@ function tabK(tExpr){
     return tabKE
 }
 
+function tabKStr(tKar){
+    let i = 0;
+    let j = 0;
+    let k = 0;
+    tkStrTab = ["</td><td>","</td><td>","</td><td>","</td></tr><tr><th>01</th><td>","</td><td>","</td><td>","</td><td>","</td></tr><tr><th>11</th><td>","</td><td>","</td><td>","</td><td>","</td></tr><tr><th>10</th><td>","</td><td>","</td><td>","</td><td>","</td></tr></tbody></table>"];
+    tkStr = "<table><thead><tr><th>AB\CD</th><th>00</th><th>01</th><th>11</th><th>10</th></tr></thead><tbody><tr><th>00</th><td>";
+    while (k<tkStrTab.length){
+        tkStr += tKar[i][j];
+        tkStr += tkStrTab[k];
+        j = j+1;
+        k = k+1;
+        if (j==4){
+            i = i+1;
+            j = 0;
+        }
+    }
+    return tkStr
+}
+
 function test2(){
-    console.log("logique 1",tabExpr(recupExpr()));
-    console.log("logique 2",tabExpr2(recupExpr()));
-    tabK(tabExpr2(recupExpr()))
+    //console.log("logique 1",tabExpr(recupExpr()));
+    //console.log("logique 2",tabExpr2(recupExpr()));
+    tabkar = tabK(tabExpr2(recupExpr()));
+    //console.log(tabkar);
+    //console.log(tabKStr(tabkar));
+    affichageTabK(tabKStr(tabkar))
 }
