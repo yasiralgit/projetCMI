@@ -148,7 +148,7 @@ function tabExpr2(expr){
                 sp[i] = new Logique2(sp[i]).VAR();
             }
         }
-        console.log(sp);
+        //console.log(sp);
         return new Logique2(new Logique2(sp[0],sp[1]).ET(),new Logique2(sp[2],sp[3]).ET()).ET()
     }
     else{
@@ -160,18 +160,36 @@ function tabExpr2(expr){
     }
 }
 
-console.log("logique 1",tabExpr(test));
-console.log("logique 2",tabExpr2(test));
+//console.log("logique 1",tabExpr(recupExpr()));
+//console.log("logique 2",tabExpr2(recupExpr()));
 // sortie devrait être [["!A","B","C","D"],"+",["!A","!B","C","!D"],"+",["A","B","C","D"]]
+// sortie devrait être ["0111","+","0010","+","1111"]
 
 function tabK(tExpr){
+    console.log(tExpr);
     tabk = [["0000","0001","0011","0010"],
     ["0100","0101","0111","0110"],
     ["1100","1101","1111","1110"],
     ["1000","1001","1011","1010"]];
     tabKE = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
     for (let i = 0;i<tExpr.length;i=i+2){
-        for (let j =0;j<tExpr[i].length;j=j+1){
+        console.log("boucle i", i);
+        for (let j = 0;j<tabk.length;j=j+1){
+            console.log("boucle j", j);
+            for (let k = 0;k<tabk[j].length;k=k+1){
+                console.log("tExpr et tabK = ", tExpr[i], tabk[j][k]);
+                if (tExpr[i] == tabk[j][k]){
+                    tabKE[j][k] = 1;
+                    console.log("normalement 1");
+                }
+            } 
         }
     }
+    return tabKE
+}
+
+function test2(){
+    console.log("logique 1",tabExpr(recupExpr()));
+    console.log("logique 2",tabExpr2(recupExpr()));
+    tabK(tabExpr2(recupExpr()))
 }
