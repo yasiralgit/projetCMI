@@ -142,14 +142,14 @@ function tabExpr2(expr){
         sp = sectET(expr);
         for (let i = 0;i<sp.length;i+=1){
             if (sp[i][0] == "!"){
-                sp[i] = [new Logique2(sp[i]).NOT()];
+                sp[i] = new Logique2(sp[i]).NOT();
             }
             else{
-                sp[i] = [new Logique2(sp[i]).VAR()];
+                sp[i] = new Logique2(sp[i]).VAR();
             }
         }
         //console.log(sp);
-        return new Logique2(new Logique2(sp[0],sp[1]).ET(),new Logique2(sp[2],sp[3]).ET()).ET()
+        return [new Logique2(new Logique2(sp[0],sp[1]).ET(),new Logique2(sp[2],sp[3]).ET()).ET()]
     }
     else{
         //console.log("on a pas tous les sous-produits");
