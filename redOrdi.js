@@ -280,17 +280,21 @@ function kar2exp(tbk) {
                     bloc4.push([bloc2[i],bloc2[j]]);
                     verifVoisins = true;
                 }
-                if (((bloc2[i][0][0] == bloc2[j][0][0])&&(((bloc2[i][0][1]-bloc2[j][0][1])**2)==1))||((bloc2[i][0][1] == bloc2[j][0][1])&&(((bloc2[i][0][0]-bloc2[j][0][0])**2)==1))){
-                    if(((bloc2[i][1][0] == bloc2[j][1][0])&&(((bloc2[i][1][1]-bloc2[j][1][1])**2)==1))||((bloc2[i][1][1] == bloc2[j][1][1])&&(((bloc2[i][1][0]-bloc2[j][1][0])**2)==1))){
-                        bloc4.push([bloc2[i],bloc2[j]]);
-                        verifVoisins = true;
-                    }
+                if (((bloc2[i][0][0] == bloc2[j][0][0])&&(((bloc2[i][0][1]-bloc2[j][0][1])**2)==1))&&((bloc2[i][1][0] == bloc2[j][1][0])&&(((bloc2[i][1][1]-bloc2[j][1][1])**2)==1))){
+                    bloc4.push([bloc2[i],bloc2[j]]);
+                    verifVoisins = true;
                 }
-                if (((bloc2[i][0][0] == bloc2[j][0][0])&&(((bloc2[i][0][1]-bloc2[j][0][1])**2)==9))||((bloc2[i][0][1] == bloc2[j][0][1])&&(((bloc2[i][0][0]-bloc2[j][0][0])**2)==9))){
-                    if(((bloc2[i][1][0] == bloc2[j][1][0])&&(((bloc2[i][1][1]-bloc2[j][1][1])**2)==9))||((bloc2[i][1][1] == bloc2[j][1][1])&&(((bloc2[i][1][0]-bloc2[j][1][0])**2)==9))){
+                if(((bloc2[i][0][1] == bloc2[j][0][1])&&(((bloc2[i][0][0]-bloc2[j][0][0])**2)==1))&&((bloc2[i][1][1] == bloc2[j][1][1])&&(((bloc2[i][1][0]-bloc2[j][1][0])**2)==1))){
+                    bloc4.push([bloc2[i],bloc2[j]]);
+                    verifVoisins = true;
+                }
+                if (((bloc2[i][0][0] == bloc2[j][0][0])&&(((bloc2[i][0][1]-bloc2[j][0][1])**2)==9))&&((bloc2[i][1][0] == bloc2[j][1][0])&&(((bloc2[i][1][1]-bloc2[j][1][1])**2)==9))){
+                    bloc4.push([bloc2[i],bloc2[j]]);
+                    verifVoisins = true;
+                }
+                if(((bloc2[i][0][1] == bloc2[j][0][1])&&(((bloc2[i][0][0]-bloc2[j][0][0])**2)==9))&&((bloc2[i][1][1] == bloc2[j][1][1])&&(((bloc2[i][1][0]-bloc2[j][1][0])**2)==9))){
                         bloc4.push([bloc2[i],bloc2[j]]);
                         verifVoisins = true;
-                    }
                 }
             }
         }
@@ -328,8 +332,8 @@ function test2(){
     var marTEST = [
         [1,0,0,1],
         [0,1,1,0],
-        [0,1,1,0],
-        [1,0,0,1]
+        [0,0,1,0],
+        [0,0,0,1]
         ];
     //console.log("logique 1",tabExpr(recupExpr()));
     //console.log("logique 2",tabExpr2(recupExpr()));
