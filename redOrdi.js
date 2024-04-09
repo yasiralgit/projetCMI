@@ -271,33 +271,36 @@ function kar2exp(tbk) {
     for (let i = 0;i<bloc2.length;i++){
         verifVoisins = false;
         for (let j = i+1;j<bloc2.length;j++){
-            if(!((bloc2[j].includes(bloc2[i][0])) || (bloc2[j].includes(bloc2[i][1])))){
-                if (bloc2[i][0][0] == bloc2[i][1][0] == bloc2[j][0][0] == bloc2[j][1][0]){
+            if (!reducBloc4(bloc4,bloc2[i],bloc2[j])){
+                if(!((bloc2[j].includes(bloc2[i][0])) || (bloc2[j].includes(bloc2[i][1])))){
+                    if ((bloc2[i][0][0] == bloc2[i][1][0])&&(bloc2[i][0][0]==bloc2[j][0][0])&&(bloc2[i][0][0] == bloc2[j][1][0])){
                     bloc4.push([bloc2[i],bloc2[j]]);
                     verifVoisins = true;
                 }
-                if (bloc2[i][0][1] == bloc2[i][1][1] == bloc2[j][0][1] == bloc2[j][1][1]){
+                    else if ((bloc2[i][0][1] == bloc2[i][1][1])&&(bloc2[i][0][1]==bloc2[j][0][1])&&(bloc2[i][0][1] == bloc2[j][1][1])){
                     bloc4.push([bloc2[i],bloc2[j]]);
                     verifVoisins = true;
                 }
-                if (((bloc2[i][0][0] == bloc2[j][0][0])&&(((bloc2[i][0][1]-bloc2[j][0][1])**2)==1))&&((bloc2[i][1][0] == bloc2[j][1][0])&&(((bloc2[i][1][1]-bloc2[j][1][1])**2)==1))){
+                    else if (((bloc2[i][0][0] == bloc2[j][0][0])&&(((bloc2[i][0][1]-bloc2[j][0][1])**2)==1))||((bloc2[i][1][0] == bloc2[j][1][0])&&(((bloc2[i][1][1]-bloc2[j][1][1])**2)==1))){
+                        //AJOUTER UN IF IMBRIQUÉ QUI ANALYSE LES DEUXIÈMES POINTS POUR VOIR SI EUX ILS SONT VOISINS OU NON!!!!!!!!!!!!! OU PEUT ETRE LE PB EST AUTRE PART
+                        bloc4.push([bloc2[i],bloc2[j]]);
+                        verifVoisins = true;
+                }
+                    else if(((bloc2[i][0][1] == bloc2[j][0][1])&&(((bloc2[i][0][0]-bloc2[j][0][0])**2)==1))||((bloc2[i][1][1] == bloc2[j][1][1])&&(((bloc2[i][1][0]-bloc2[j][1][0])**2)==1))){
                     bloc4.push([bloc2[i],bloc2[j]]);
                     verifVoisins = true;
                 }
-                if(((bloc2[i][0][1] == bloc2[j][0][1])&&(((bloc2[i][0][0]-bloc2[j][0][0])**2)==1))&&((bloc2[i][1][1] == bloc2[j][1][1])&&(((bloc2[i][1][0]-bloc2[j][1][0])**2)==1))){
+                    else if (((bloc2[i][0][0] == bloc2[j][0][0])&&(((bloc2[i][0][1]-bloc2[j][0][1])**2)==9))||((bloc2[i][1][0] == bloc2[j][1][0])&&(((bloc2[i][1][1]-bloc2[j][1][1])**2)==9))){
                     bloc4.push([bloc2[i],bloc2[j]]);
                     verifVoisins = true;
                 }
-                if (((bloc2[i][0][0] == bloc2[j][0][0])&&(((bloc2[i][0][1]-bloc2[j][0][1])**2)==9))&&((bloc2[i][1][0] == bloc2[j][1][0])&&(((bloc2[i][1][1]-bloc2[j][1][1])**2)==9))){
-                    bloc4.push([bloc2[i],bloc2[j]]);
-                    verifVoisins = true;
-                }
-                if(((bloc2[i][0][1] == bloc2[j][0][1])&&(((bloc2[i][0][0]-bloc2[j][0][0])**2)==9))&&((bloc2[i][1][1] == bloc2[j][1][1])&&(((bloc2[i][1][0]-bloc2[j][1][0])**2)==9))){
+                    else if(((bloc2[i][0][1] == bloc2[j][0][1])&&(((bloc2[i][0][0]-bloc2[j][0][0])**2)==9))||((bloc2[i][1][1] == bloc2[j][1][1])&&(((bloc2[i][1][0]-bloc2[j][1][0])**2)==9))){
                         bloc4.push([bloc2[i],bloc2[j]]);
                         verifVoisins = true;
                 }
             }
         }
+    }
     } //bloc4 = [[[[i,j],[i,j]],[[i,j],[i,j]]],[[[i,j],[i,j]],[[i,j],[i,j]]]]
     for (let i = 0;i<bloc4.length;i++){
         verifVoisins = false;
@@ -328,12 +331,35 @@ function kar2exp(tbk) {
     console.log("bloc 1", bloc1);
 }
 
+function reducBloc4(lBloc,bloc_i,bloc_j){
+    console.log("test de reduction");
+    for (let i=0;i<lBloc.length;i++){
+        /**console.log("lBloc[i][0] =", lBloc[i][0], "et bloc_i[0] = ", bloc_i[0]);
+        console.log("lBloc[i][0] =", lBloc[i][0], "et bloc_i[1] = ", bloc_i[1]);
+        console.log("lBloc[i][1] =", lBloc[i][1], "et bloc_i[0] = ", bloc_i[0]);
+        console.log("lBloc[i][1] =", lBloc[i][1], "et bloc_i[1] = ", bloc_i[1]);*/
+        if (lBloc[i][0].includes(bloc_i[0])||lBloc[i][1].includes(bloc_i[0])){ //test si premier point du bloc_i à ajouter se trouve dans le bloc dans lBloc en cours d'analyse
+            if (lBloc[i][0].includes(bloc_i[1])||lBloc[i][1].includes(bloc_i[1])){ //test si deuxieme point du bloc_i à ajouter se trouve dans le bloc dans lBloc en cours d'analyse
+                if (lBloc[i][0].includes(bloc_j[0])||lBloc[i][1].includes(bloc_j[0])){//test si premier point du bloc_j à ajouter se trouve dans le bloc dans lBloc en cours d'analyse
+                    if (lBloc[i][0].includes(bloc_j[1])||lBloc[i][1].includes(bloc_j[1])){
+                        //test si deuxieme point du bloc_j à ajouter se trouve dans le bloc dans lBloc en cours d'analyse
+                        return true
+                    }
+
+                }
+            }
+        }
+    }
+    return false
+}
+
+
 function test2(){
     var marTEST = [
-        [1,0,0,1],
+        [1,1,1,1],
         [0,1,1,0],
-        [0,0,1,0],
-        [0,0,0,1]
+        [0,0,0,0],
+        [0,0,0,0]
         ];
     //console.log("logique 1",tabExpr(recupExpr()));
     //console.log("logique 2",tabExpr2(recupExpr()));
