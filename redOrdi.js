@@ -221,13 +221,7 @@ function kar2exp(tbk) {
         ['A.B.!C.!D','A.B.!C.D','A.B.C.D','A.B.C.!D'],
         ['A.!B.!C.!D','A.!B.!C.D','A.!B.C.D','A.!B.C.!D']
         ];
-    var marTEST = [
-    [0,0,0,0],
-    [0,0,1,0],
-    [0,0,1,0],
-    [0,0,0,0]
-    ];
-    var cpt = 0 ; var pos = []; var coor = []; var bloc1 = []; var bloc2 = []; var bloc4 = []; var verifVoisins;
+    var cpt = 0 ; var pos = []; var coor = []; var bloc1 = []; var bloc2 = []; var bloc4 = []; var bloc8 = []; var verifVoisins;
     for (let i = 0 ; i<tbk.length ; i++) {
         for (let j = 0 ;j < tbk[i].length ; j++) {
             if (tbk[i][j] == 1) {
@@ -262,20 +256,10 @@ function kar2exp(tbk) {
                 bloc2.push([coor[i],coor[j]]);
                 verifVoisins = true;
             }
-            if(coor[i][1]==3){
-                for (elt of bloc2){
-                    if (elt.includes(coor[i])){ //bloc2 = [[[i,j],[i,j]],[[i,j],[i,j]]]
-                        verifVoisins = true;
-                    }
-                }
-            }
-
         }
-        if(i==coor.length-1){
-            for (elt of bloc2){
+        for (elt of bloc2){
             if (elt.includes(coor[i])){ //bloc2 = [[[i,j],[i,j]],[[i,j],[i,j]]]
                 verifVoisins = true;
-            }
             }
         }
         if (!verifVoisins){
@@ -283,6 +267,7 @@ function kar2exp(tbk) {
             bloc1.push(coor[i]);
         }
     }
+
     for (let i = 0;i<bloc2.length;i++){
         verifVoisins = false;
         for (let j = i+1;j<bloc2.length;j++){
@@ -315,22 +300,43 @@ function kar2exp(tbk) {
         for (let j = i+1;j<bloc4.length;j++){
             if(!((bloc4[j][0].includes(bloc4[i][0])) || (bloc4[j][0].includes(bloc4[i][1])) || (bloc4[j][1].includes(bloc4[i][0])) || (bloc4[j][1].includes(bloc4[i][1])))){
                 console.log("pas confondus");
+                if (bloc4[i][0][0][1] == bloc4[j][0][0][1]&&bloc4[i][0][1][1] == bloc4[j][0][1][1]&&bloc4[i][1][0][1] == bloc4[j][1][0][1]&&bloc4[i][1][1][1] == bloc4[j][1][1][1]){
+                    console.log("deux lignes de 4");
+                    bloc8.push([bloc4[i],bloc4[j]]);
+                }
+                if (bloc4[i][0][0][0] == bloc4[j][0][0][0]&&bloc4[i][0][1][0] == bloc4[j][0][1][0]&&bloc4[i][1][0][0] == bloc4[j][1][0][0]&&bloc4[i][1][1][0] == bloc4[j][1][1][0]){
+                    console.log("deux colonnes de 4");
+                    bloc8.push([bloc4[i],bloc4[j]]);
+                }
+                if (((bloc4[i][0][0][0] == bloc4[j][0][0][0])&&(((bloc4[i][0][0][1]-bloc4[j][0][0][1])**2)==9))||((bloc4[i][0][0][1] == bloc4[j][0][0][1])&&(((bloc4[i][0][0][0]-bloc4[j][0][0][0])**2)==9))){
+                    if(((bloc4[i][1][1][0] == bloc4[j][1][1][0])&&(((bloc4[i][1][1][1]-bloc4[j][1][1][1])**2)==9))||((bloc4[i][1][1][1] == bloc4[j][1][1][1])&&(((bloc4[i][1][1][0]-bloc4[j][1][1][0])**2)==9))){
+                        console.log("blocs 4 circulaire")
+                        bloc8.push([bloc4[i],bloc4[j]]);
+                        verifVoisins = true;
+                    }
+                }
             }
         }
     }
+    console.log("bloc 8", bloc8)
     console.log("bloc 4", bloc4);
     console.log("bloc 2 ", bloc2);
     console.log("bloc 1", bloc1);
-   }
-
+}
 
 function test2(){
+    var marTEST = [
+        [1,0,0,1],
+        [0,1,1,0],
+        [0,1,1,0],
+        [1,0,0,1]
+        ];
     //console.log("logique 1",tabExpr(recupExpr()));
     //console.log("logique 2",tabExpr2(recupExpr()));
     console.log(tabExpr2(recupExpr()))
     tabkar = tabK(tabExpr2(recupExpr()));
     console.log(tabkar);
     //console.log(tabKStr(tabkar));
-    affichageTabK(tabKStr(tabkar));
-    kar2exp(tabkar)
+    affichageTabK(tabKStr(marTEST));
+    kar2exp(marTEST)
 }
