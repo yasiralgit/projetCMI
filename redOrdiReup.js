@@ -1,5 +1,5 @@
 var testKar = [
-    [1,1,0,1],
+    [1,1,1,1],
     [1,1,1,1],
     [0,0,0,0],
     [0,0,0,0]
@@ -41,39 +41,39 @@ function composantesBlocs(g,aTraiter){
                         if (!(g[g[som][i]][k] == som)){
                             if (g[g[som][j]].includes(g[g[som][i]][k])){
                                 if (compBlocs[som] in compBlocs){
-                                    if (!(compBlocs[som].includes(g[g[som][i]][k]))){
-                                        compBlocs[som].push(g[g[som][i]][k]);
+                                    if (!(compBlocs[som].includes(som))){
+                                        compBlocs[som].push(som);
                                     }
                                 }
                                 else{
-                                    compBlocs[som] = [g[g[som][i]][k]];
+                                    compBlocs[som] = [som];
                                 }
 
                                 if (g[som][i] in compBlocs){
-                                    if (!(compBlocs[g[som][i]].includes(g[g[som][i]][k]))){
-                                        compBlocs[g[som][i]].push(g[g[som][i]][k]);
+                                    if (!(compBlocs[g[som][i]].includes(som))){
+                                        compBlocs[g[som][i]].push(som);
                                     }
                                 }
                                 else{
-                                    compBlocs[g[som][i]] = [g[g[som][i]][k]];
+                                    compBlocs[g[som][i]] = [som];
                                 }
 
                                 if (g[som][j] in compBlocs){
-                                    if (!(compBlocs[g[som][j]].includes(g[g[som][i]][k]))){
-                                        compBlocs[g[som][j]].push(g[g[som][i]][k]);
+                                    if (!(compBlocs[g[som][j]].includes(som))){
+                                        compBlocs[g[som][j]].push(som);
                                     }
                                 }
                                 else{
-                                    compBlocs[g[som][j]] = [g[g[som][i]][k]];
+                                    compBlocs[g[som][j]] = [som];
                                 }
 
                                 if (g[g[som][i]][k] in compBlocs){
-                                    if(!(compBlocs[g[g[som][i]][k]].includes(g[g[som][i]][k]))){
-                                        compBlocs[g[g[som][i]][k]].push(g[g[som][i]][k]);
+                                    if(!(compBlocs[g[g[som][i]][k]].includes(som))){
+                                        compBlocs[g[g[som][i]][k]].push(som);
                                     }
                                 }
                                 else{
-                                    compBlocs[g[g[som][i]][k]] = [g[g[som][i]][k]];
+                                    compBlocs[g[g[som][i]][k]] = [som];
                                 }
                                 aTraiter[g[som][i]] = true; aTraiter[g[som][j]] = true; aTraiter[g[g[som][i]][k]] = true;
                             }
