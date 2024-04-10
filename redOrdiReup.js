@@ -1,6 +1,6 @@
 var testKar = [
+    [1,1,0,1],
     [1,1,1,1],
-    [0,1,1,0],
     [0,0,0,0],
     [0,0,0,0]
 ];
@@ -34,15 +34,48 @@ function composantesBlocs(g,aTraiter){
     var compBlocs = {}; var listeBlocs = {};
     for (som in g){
         if (!aTraiter[som]){
-            compBlocs[som] = [som];
+            compBlocs[som] = [som]; aTraiter[som] = true;
             for (let i = 0;i<g[som].length;i++){ //premier élément des voisins du sommet courant
                 for (let j = i+1;j<g[som].length;j++){  //autres voisins du sommet courant
                     for (let k = 0;k<g[g[som][i]].length;k++){
                         if (!(g[g[som][i]][k] == som)){
                             if (g[g[som][j]].includes(g[g[som][i]][k])){
-                                compBlocs[g[som][i]] = [som];
-                                compBlocs[g[som][j]] = [som];
-                                compBlocs[g[g[som][i]][k]] = [som];
+                                if (compBlocs[som] in compBlocs){
+                                    if (!(compBlocs[som].includes(g[g[som][i]][k]))){
+                                        compBlocs[som].push(g[g[som][i]][k]);
+                                    }
+                                }
+                                else{
+                                    compBlocs[som] = [g[g[som][i]][k]];
+                                }
+
+                                if (g[som][i] in compBlocs){
+                                    if (!(compBlocs[g[som][i]].includes(g[g[som][i]][k]))){
+                                        compBlocs[g[som][i]].push(g[g[som][i]][k]);
+                                    }
+                                }
+                                else{
+                                    compBlocs[g[som][i]] = [g[g[som][i]][k]];
+                                }
+
+                                if (g[som][j] in compBlocs){
+                                    if (!(compBlocs[g[som][j]].includes(g[g[som][i]][k]))){
+                                        compBlocs[g[som][j]].push(g[g[som][i]][k]);
+                                    }
+                                }
+                                else{
+                                    compBlocs[g[som][j]] = [g[g[som][i]][k]];
+                                }
+
+                                if (g[g[som][i]][k] in compBlocs){
+                                    if(!(compBlocs[g[g[som][i]][k]].includes(g[g[som][i]][k]))){
+                                        compBlocs[g[g[som][i]][k]].push(g[g[som][i]][k]);
+                                    }
+                                }
+                                else{
+                                    compBlocs[g[g[som][i]][k]] = [g[g[som][i]][k]];
+                                }
+                                aTraiter[g[som][i]] = true; aTraiter[g[som][j]] = true; aTraiter[g[g[som][i]][k]] = true;
                             }
                         }
                     }
@@ -50,7 +83,11 @@ function composantesBlocs(g,aTraiter){
             }
         }
     }
+    console.log(compBlocs);
+    console.log(aTraiter);
 }
 
-
-composantesBlocs(graphe(testKar)[0],graphe(testKar)[1]);
+gTest = graphe(testKar)[0];
+aTraiterTest = graphe(testKar)[1];
+console.log(gTest);
+composantesBlocs(gTest,aTraiterTest);
