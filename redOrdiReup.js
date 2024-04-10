@@ -31,8 +31,26 @@ function graphe(tabKar){
 
 
 function composantesBlocs(g,aTraiter){
-    
+    var compBlocs = {}; var listeBlocs = {};
+    for (som in g){
+        if (!aTraiter[som]){
+            compBlocs[som] = [som];
+            for (let i = 0;i<g[som].length;i++){ //premier élément des voisins du sommet courant
+                for (let j = i+1;j<g[som].length;j++){  //autres voisins du sommet courant
+                    for (let k = 0;k<g[g[som][i]].length;k++){
+                        if (!(g[g[som][i]][k] == som)){
+                            if (g[g[som][j]].includes(g[g[som][i]][k])){
+                                compBlocs[g[som][i]] = [som];
+                                compBlocs[g[som][j]] = [som];
+                                compBlocs[g[g[som][i]][k]] = [som];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 
-graphe(testKar)
+composantesBlocs(graphe(testKar)[0],graphe(testKar)[1]);
