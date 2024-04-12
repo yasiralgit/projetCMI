@@ -25,10 +25,10 @@ class Pile {
 
 
 var testKar = [
-    [1,1,1,0],
-    [0,1,0,1],
-    [1,0,1,1],
-    [1,1,1,0]
+    [1,1,1,1],
+    [1,1,1,1],
+    [0,0,0,0],
+    [0,0,0,0]
 ];
 
 
@@ -69,29 +69,27 @@ console.log(pTest);*/
 
 function lBlocs(g,aTraiter){
     var listeBlocs = {}; var p; var include;
-    for (som in g){
+    for (som in g){ //
         if (!aTraiter[som]){
             pileBloc = new Pile();
             pileBloc.empiler(som); aTraiter[som] = true;
             if(g[som].length > 0){pileBloc.empiler(g[som][0]); aTraiter[g[som][0]] = true;}
             for (let j = 0;j<g[som].length;j++){
                 for (let i=j+1;i<g[som].length;i++){
-                    pileBloc.empiler(g[som][i]);
+                    if(!((pileBloc.tab()).includes(g[som][i]))){pileBloc.empiler(g[som][i]);}
                     include = false;
                     for (autreSom in g){
                         if (autreSom != som){
                             if (g[autreSom].includes(g[som][j])&&g[autreSom].includes(g[som][i])){
                                 aTraiter[g[som][i]] = true;
                                 if(!((pileBloc.tab()).includes(autreSom))){
-                                pileBloc.empiler(autreSom); aTraiter[autreSom] = true; }
-                                if(!((pileBloc.tab()).includes(g[som][j]))){pileBloc.empiler(g[som][j]); aTraiter[g[som][j]] = true; }
+                                pileBloc.empiler(autreSom); aTraiter[autreSom] = true;}
+                                if(!((pileBloc.tab()).includes(g[som][j]))){pileBloc.empiler(g[som][j]); aTraiter[g[som][j]] = true;}
                                 include = true;
                             }
                         }
                     }
-                    if (!(include)){
-                        pileBloc.depiler();
-                    }
+                    if (!(include)){pileBloc.depiler();}
                 }
             }
             listeBlocs[som] = pileBloc;
@@ -99,6 +97,11 @@ function lBlocs(g,aTraiter){
     }
     console.log(listeBlocs);
 }
+
+gTest = graphe(testKar)[0];
+aTraiterTest = graphe(testKar)[1];
+console.log(gTest);console.log(aTraiterTest);
+lBlocs(gTest,aTraiterTest);
 
 /**function composantesBlocs2(g,aTraiter){
     var compBlocs2 = {};
@@ -217,9 +220,5 @@ function lBlocs(g,aTraiter){
     console.log(aTraiter);
 }*/
 
-gTest = graphe(testKar)[0];
-aTraiterTest = graphe(testKar)[1];
-console.log(gTest);console.log(aTraiterTest);
-lBlocs(gTest,aTraiterTest);
 //composantesBlocs2(gTest,aTraiterTest);
 //composantesBlocs(gTest,aTraiterTest);
