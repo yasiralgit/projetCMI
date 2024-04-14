@@ -1,0 +1,19 @@
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+    width: 100%
+}
+
+th {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+table td, table th {
+    border-left : 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+td {
+    border-bottom: 1px solid #ddd;
+}

@@ -1,0 +1,29 @@
+* {
+    background-color: rgb(255, 255, 255);
+}
+
+table {
+    border-collapse :collapse;
+    border-spacing: 0;
+    width: 100%;
+
+}
+th {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+table td, table th {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+tr:nth-child(even) {
+    background-color: #3b3a3a;
+}
+td {
+    border-bottom : 1px solid #ddd
+}
+
+.butp {
+    width: 33%;
+    height: 250px;
+}
