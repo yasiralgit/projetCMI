@@ -14,13 +14,8 @@ class Pile {
     }
 
     estVide(){
-        return ((this.p) == [])
+        return ((this.p).length == 0)
     }
-
-    tab(){ //à revoir pcq je crois pas que ce soit dans les vraies règles du principe des piles mais peu importe pour l'instant
-        return this.p
-    }
-
 }
 
 
@@ -28,9 +23,36 @@ class Pile {
 var testKar = [
     [1,1,1,1],
     [1,1,1,1],
-    [1,1,1,1],
-    [1,1,1,1]
+    [0,0,0,0],
+    [0,0,0,0]
 ];
+
+
+function appartient(e,b){
+    var pileInt; var isInB = false; var elt;
+    pileInt = new Pile();
+    while((!(b.estVide()))&&(!isInB)){
+        elt = b.depiler(); pileInt.empiler(elt);
+        if (elt==e){
+            isInB = true;
+        }
+    }
+    while(pileInt.estVide()!=true){
+        b.empiler(pileInt.depiler());
+    }
+    return isInB
+}
+
+//tests fct appartient
+/**pileTest = new Pile();
+console.log(pileTest.estVide());
+console.log(pileTest);
+pileTest.empiler('j');
+pileTest.empiler('a');
+pileTest.empiler('d');
+pileTest.empiler('e');
+console.log(pileTest);
+console.log(appartient('a',pileTest));*/
 
 
 function graphe(tabKar){
@@ -77,15 +99,15 @@ function lBlocs(g,aTraiter){// voir explications explicites sur le rapport final
             if(g[som].length > 0){pileBloc.empiler(g[som][0]); aTraiter[g[som][0]] = true;}//si il a au moins un voisin on l'empile, et éventuellement on entre dans les boucles, sinon on va directement à la ligne après la première boucle for
             for (let j = 0;j<g[som].length;j++){//itération sur tous les voisins du sommet courant
                 for (let i=j+1;i<g[som].length;i++){//itération sur les voisins du sommet courant autre que celui précédent
-                    if(!((pileBloc.tab()).includes(g[som][i]))){pileBloc.empiler(g[som][i]);}//en lien avec ligne 93, on l'empile avec la condition qu'il permette un agrandissement à un bloc d'une taille de puissance de 2, et qu'il n'y soit pas déjà pour éviter les doublons (cas d'un bloc de 8 par ex)
+                    if(!(appartient(g[som][i],pileBloc))){pileBloc.empiler(g[som][i]);}//en lien avec ligne 93, on l'empile avec la condition qu'il permette un agrandissement à un bloc d'une taille de puissance de 2, et qu'il n'y soit pas déjà pour éviter les doublons (cas d'un bloc de 8 par ex)
                     include = false;
                     for (autreSom in g){ //on itère sur tout les autres sommets du graphe
                         if (autreSom != som){ //on exclut le sommet courant som
                             if (g[autreSom].includes(g[som][j])&&g[autreSom].includes(g[som][i])){ //on vérifie si autreSom est bien voisin avec deux voisins communs au sommet courant som
                                 aTraiter[g[som][i]] = true;
-                                if(!((pileBloc.tab()).includes(autreSom))){//pour éviter les doublons
+                                if(!(appartient(autreSom,pileBloc))){//pour éviter les doublons
                                     pileBloc.empiler(autreSom); aTraiter[autreSom] = true;}
-                                if(!((pileBloc.tab()).includes(g[som][j]))){//pour éviter les doublons
+                                if(!(appartient(g[som][j],pileBloc))){//pour éviter les doublons
                                     pileBloc.empiler(g[som][j]); aTraiter[g[som][j]] = true;}
                                 include = true;//pour le garder dans le bloc puisqu'il répond à la condition
                             }
@@ -101,6 +123,7 @@ function lBlocs(g,aTraiter){// voir explications explicites sur le rapport final
      * -blocs de 8: les clés des deux blocs sortant dans listeBlocs s'excluent mutuellement, donc faut les fusionner (piles de 7 elts au lieu de 8)
      * -blocs de 16: mm pb sauf que au lieu de manquer que 1 élément, il lui en manque 5 et de la même manière, mutuellement avec la deuxième pile
     */
+
     console.log(listeBlocs); //on retourne le dico des blocs selon une origine pour pouvoir ensuite passer à la traduction
 }
 
