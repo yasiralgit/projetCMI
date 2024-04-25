@@ -65,19 +65,19 @@ function recupExpr() {
 }
 
 function affichageTabK(tkS) {
-    tkar = "";
-    const cb = document.getElementById("correK").checked;
+    //tkar = "";
+    //const cb = document.getElementById("correK").checked;
     const exp = recupExpr();
-    if (cb == true){
-        console.log(cb);
-        if (exp != ''){
-            tableKar.innerHTML = tkS;
-            console.log("procédé tableau de Karnaugh affiché");
-        }
+    //if (cb == true){
+    console.log(cb);
+    if (exp != ''){
+        tableKar.innerHTML = tkS;
+        console.log("procédé tableau de Karnaugh affiché");
     }
-    else{
-        tableKar.innerHTML = ""
-    }
+    //}
+    //else{
+    //    tableKar.innerHTML = ""
+    //}
 }
 
 function prod(expr){
@@ -149,7 +149,7 @@ function tabExpr2(expr){
             }
         }
         //console.log(sp);
-        return new Logique2(new Logique2(sp[0],sp[1]).ET(),new Logique2(sp[2],sp[3]).ET()).ET()
+        return [new Logique2(new Logique2(sp[0],sp[1]).ET(),new Logique2(sp[2],sp[3]).ET()).ET()]
     }
     else{
         //console.log("on a pas tous les sous-produits");
@@ -166,21 +166,21 @@ function tabExpr2(expr){
 // sortie devrait être ["0111","+","0010","+","1111"]
 
 function tabK(tExpr){
-    //console.log(tExpr);
+    console.log(tExpr);
     tabk = [["0000","0001","0011","0010"],
     ["0100","0101","0111","0110"],
     ["1100","1101","1111","1110"],
     ["1000","1001","1011","1010"]];
     tabKE = [["0","0","0","0"],["0","0","0","0"],["0","0","0","0"],["0","0","0","0"]];
     for (let i = 0;i<tExpr.length;i=i+2){
-        //console.log("boucle i", i);
+        console.log("boucle i", i);
         for (let j = 0;j<tabk.length;j=j+1){
-            //console.log("boucle j", j);
+            console.log("boucle j", j);
             for (let k = 0;k<tabk[j].length;k=k+1){
-                //console.log("tExpr et tabK = ", tExpr[i], tabk[j][k]);
+                console.log("tExpr et tabK = ", tExpr[i], tabk[j][k]);
                 if (tExpr[i] == tabk[j][k]){
                     tabKE[j][k] = "1";
-                    //console.log("normalement 1");
+                    console.log("normalement 1");
                 }
             } 
         }
@@ -207,11 +207,166 @@ function tabKStr(tKar){
     return tkStr
 }
 
+//prototype de yasir
+function kar2exp(tbk) {
+    var marTrans = [
+    ['0000','0001','0011','0010'],
+    ['0100','0101','0111','0110'],
+    ['1100','1101','1111','1110'],
+    ['1000','1001','1011','1010']
+    ];
+    var marTrad = [
+        ['!A.!B.!C.!D','!A.!B.!C.D','!A.!B.C.D','!A.!B.C.!D'],
+        ['!A.B.!C.!D','!A.B.!C.D','!A.B.C.D','!A.B.C.!D'],
+        ['A.B.!C.!D','A.B.!C.D','A.B.C.D','A.B.C.!D'],
+        ['A.!B.!C.!D','A.!B.!C.D','A.!B.C.D','A.!B.C.!D']
+        ];
+    var cpt = 0 ; var pos = []; var coor = []; var bloc1 = []; var bloc2 = []; var bloc4 = []; var bloc8 = []; var verifVoisins;
+    for (let i = 0 ; i<tbk.length ; i++) {
+        for (let j = 0 ;j < tbk[i].length ; j++) {
+            if (tbk[i][j] == 1) {
+                cpt ++ 
+                pos.push(marTrans[i][j])
+                coor.push([i,j]);
+            }
+
+        }
+    }
+    console.log(pos);
+    console.log(coor);
+    if (pos.length == 1) {
+        console.log("1 seul 1");
+        return pos[0]
+    }
+    if (pos.length == 16) {
+        console.log("seize 1");
+        return "1";
+    }
+    for (let i = 0;i<coor.length;i++){
+        verifVoisins = false;
+        for (let j = i+1;j<coor.length;j++){
+            console.log(coor[i][0]);
+            if ((coor[j][0] == coor[i][0])&&(((coor[j][1]-coor[i][1])**2)==1)||(coor[j][1] == coor[i][1])&&(((coor[j][0]-coor[i][0])**2)==1)){
+                console.log("premier if");
+                bloc2.push([coor[i],coor[j]]);
+                verifVoisins = true;
+            }
+            if ((coor[j][0] == coor[i][0])&&(((coor[j][1]-coor[i][1])**2)==9)||(coor[j][1] == coor[i][1])&&(((coor[j][0]-coor[i][0])**2)==9)){
+                console.log("2eme if");
+                bloc2.push([coor[i],coor[j]]);
+                verifVoisins = true;
+            }
+        }
+        for (elt of bloc2){
+            if (elt.includes(coor[i])){ //bloc2 = [[[i,j],[i,j]],[[i,j],[i,j]]]
+                verifVoisins = true;
+            }
+        }
+        if (!verifVoisins){
+            console.log("tt seul");
+            bloc1.push(coor[i]);
+        }
+    }
+
+    for (let i = 0;i<bloc2.length;i++){
+        verifVoisins = false;
+        for (let j = i+1;j<bloc2.length;j++){
+            if (!reducBloc4(bloc4,bloc2[i],bloc2[j])){
+                if(!((bloc2[j].includes(bloc2[i][0])) || (bloc2[j].includes(bloc2[i][1])))){
+                    if ((bloc2[i][0][0] == bloc2[i][1][0])&&(bloc2[i][0][0]==bloc2[j][0][0])&&(bloc2[i][0][0] == bloc2[j][1][0])){
+                    bloc4.push([bloc2[i],bloc2[j]]);
+                    verifVoisins = true;
+                }
+                    else if ((bloc2[i][0][1] == bloc2[i][1][1])&&(bloc2[i][0][1]==bloc2[j][0][1])&&(bloc2[i][0][1] == bloc2[j][1][1])){
+                    bloc4.push([bloc2[i],bloc2[j]]);
+                    verifVoisins = true;
+                }
+                    else if (((bloc2[i][0][0] == bloc2[j][0][0])&&(((bloc2[i][0][1]-bloc2[j][0][1])**2)==1))||((bloc2[i][1][0] == bloc2[j][1][0])&&(((bloc2[i][1][1]-bloc2[j][1][1])**2)==1))){
+                        //AJOUTER UN IF IMBRIQUÉ QUI ANALYSE LES DEUXIÈMES POINTS POUR VOIR SI EUX ILS SONT VOISINS OU NON!!!!!!!!!!!!! OU PEUT ETRE LE PB EST AUTRE PART
+                        bloc4.push([bloc2[i],bloc2[j]]);
+                        verifVoisins = true;
+                }
+                    else if(((bloc2[i][0][1] == bloc2[j][0][1])&&(((bloc2[i][0][0]-bloc2[j][0][0])**2)==1))||((bloc2[i][1][1] == bloc2[j][1][1])&&(((bloc2[i][1][0]-bloc2[j][1][0])**2)==1))){
+                    bloc4.push([bloc2[i],bloc2[j]]);
+                    verifVoisins = true;
+                }
+                    else if (((bloc2[i][0][0] == bloc2[j][0][0])&&(((bloc2[i][0][1]-bloc2[j][0][1])**2)==9))||((bloc2[i][1][0] == bloc2[j][1][0])&&(((bloc2[i][1][1]-bloc2[j][1][1])**2)==9))){
+                    bloc4.push([bloc2[i],bloc2[j]]);
+                    verifVoisins = true;
+                }
+                    else if(((bloc2[i][0][1] == bloc2[j][0][1])&&(((bloc2[i][0][0]-bloc2[j][0][0])**2)==9))||((bloc2[i][1][1] == bloc2[j][1][1])&&(((bloc2[i][1][0]-bloc2[j][1][0])**2)==9))){
+                        bloc4.push([bloc2[i],bloc2[j]]);
+                        verifVoisins = true;
+                }
+            }
+        }
+    }
+    } //bloc4 = [[[[i,j],[i,j]],[[i,j],[i,j]]],[[[i,j],[i,j]],[[i,j],[i,j]]]]
+    for (let i = 0;i<bloc4.length;i++){
+        verifVoisins = false;
+        for (let j = i+1;j<bloc4.length;j++){
+            if(!((bloc4[j][0].includes(bloc4[i][0])) || (bloc4[j][0].includes(bloc4[i][1])) || (bloc4[j][1].includes(bloc4[i][0])) || (bloc4[j][1].includes(bloc4[i][1])))){
+                console.log("pas confondus");
+                if (bloc4[i][0][0][1] == bloc4[j][0][0][1]&&bloc4[i][0][1][1] == bloc4[j][0][1][1]&&bloc4[i][1][0][1] == bloc4[j][1][0][1]&&bloc4[i][1][1][1] == bloc4[j][1][1][1]){
+                    console.log("deux lignes de 4");
+                    bloc8.push([bloc4[i],bloc4[j]]);
+                }
+                if (bloc4[i][0][0][0] == bloc4[j][0][0][0]&&bloc4[i][0][1][0] == bloc4[j][0][1][0]&&bloc4[i][1][0][0] == bloc4[j][1][0][0]&&bloc4[i][1][1][0] == bloc4[j][1][1][0]){
+                    console.log("deux colonnes de 4");
+                    bloc8.push([bloc4[i],bloc4[j]]);
+                }
+                if (((bloc4[i][0][0][0] == bloc4[j][0][0][0])&&(((bloc4[i][0][0][1]-bloc4[j][0][0][1])**2)==9))||((bloc4[i][0][0][1] == bloc4[j][0][0][1])&&(((bloc4[i][0][0][0]-bloc4[j][0][0][0])**2)==9))){
+                    if(((bloc4[i][1][1][0] == bloc4[j][1][1][0])&&(((bloc4[i][1][1][1]-bloc4[j][1][1][1])**2)==9))||((bloc4[i][1][1][1] == bloc4[j][1][1][1])&&(((bloc4[i][1][1][0]-bloc4[j][1][1][0])**2)==9))){
+                        console.log("blocs 4 circulaire")
+                        bloc8.push([bloc4[i],bloc4[j]]);
+                        verifVoisins = true;
+                    }
+                }
+            }
+        }
+    }
+    console.log("bloc 8", bloc8)
+    console.log("bloc 4", bloc4);
+    console.log("bloc 2 ", bloc2);
+    console.log("bloc 1", bloc1);
+}
+
+function reducBloc4(lBloc,bloc_i,bloc_j){
+    console.log("test de reduction");
+    for (let i=0;i<lBloc.length;i++){
+        /**console.log("lBloc[i][0] =", lBloc[i][0], "et bloc_i[0] = ", bloc_i[0]);
+        console.log("lBloc[i][0] =", lBloc[i][0], "et bloc_i[1] = ", bloc_i[1]);
+        console.log("lBloc[i][1] =", lBloc[i][1], "et bloc_i[0] = ", bloc_i[0]);
+        console.log("lBloc[i][1] =", lBloc[i][1], "et bloc_i[1] = ", bloc_i[1]);*/
+        if (lBloc[i][0].includes(bloc_i[0])||lBloc[i][1].includes(bloc_i[0])){ //test si premier point du bloc_i à ajouter se trouve dans le bloc dans lBloc en cours d'analyse
+            if (lBloc[i][0].includes(bloc_i[1])||lBloc[i][1].includes(bloc_i[1])){ //test si deuxieme point du bloc_i à ajouter se trouve dans le bloc dans lBloc en cours d'analyse
+                if (lBloc[i][0].includes(bloc_j[0])||lBloc[i][1].includes(bloc_j[0])){//test si premier point du bloc_j à ajouter se trouve dans le bloc dans lBloc en cours d'analyse
+                    if (lBloc[i][0].includes(bloc_j[1])||lBloc[i][1].includes(bloc_j[1])){
+                        //test si deuxieme point du bloc_j à ajouter se trouve dans le bloc dans lBloc en cours d'analyse
+                        return true
+                    }
+
+                }
+            }
+        }
+    }
+    return false
+}
+
+
 function test2(){
+    var marTEST = [
+        [1,1,1,1],
+        [0,1,1,0],
+        [0,0,0,0],
+        [0,0,0,0]
+        ];
     //console.log("logique 1",tabExpr(recupExpr()));
     //console.log("logique 2",tabExpr2(recupExpr()));
+    console.log(tabExpr2(recupExpr()))
     tabkar = tabK(tabExpr2(recupExpr()));
-    //console.log(tabkar);
+    console.log(tabkar);
     //console.log(tabKStr(tabkar));
-    affichageTabK(tabKStr(tabkar))
+    affichageTabK(tabKStr(marTEST));
+    kar2exp(marTEST)
 }
