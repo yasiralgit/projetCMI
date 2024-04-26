@@ -113,18 +113,18 @@ function recupExpr() {
 
 function affichageTabK(tkS) {
     tkar = "";
-    const cb = document.getElementById("correK").checked;
+    //const cb = document.getElementById("correK").checked;
     const exp = recupExpr();
-    if (cb == true){
-        console.log(cb);
+    //if (cb == true){
+        //console.log(cb);
         if (exp != ''){
             tableKar.innerHTML = tkS;
             console.log("procédé tableau de Karnaugh affiché");
         }
-    }
-    else{
-        tableKar.innerHTML = ""
-    }
+    //}
+    //else{
+    //    tableKar.innerHTML = ""
+    //}
 }
 
 function prod(expr){
@@ -185,6 +185,7 @@ function tabExpr(expr){
 }
 
 function tabExpr2(expr){
+    console.log(prod(expr))
     if (prod(expr)){
         sp = sectET(expr);
         for (let i = 0;i<sp.length;i+=1){
@@ -213,7 +214,7 @@ function tabExpr2(expr){
 // sortie devrait être ["0111","+","0010","+","1111"]
 
 function tabK(tExpr){
-    console.log(tExpr);
+    console.log(1,tExpr);
     tabk = [["0000","0001","0011","0010"],
     ["0100","0101","0111","0110"],
     ["1100","1101","1111","1110"],
@@ -460,7 +461,8 @@ function trad(listeBlocs){
             }
         }
     }
-    return expr
+    let expRed = document.getElementById("expRed")
+    expRed.innerHTML = expr 
 }
 
 
