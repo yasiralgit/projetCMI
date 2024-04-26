@@ -12,16 +12,16 @@
             <div>
                 <label for="expressionAReduire">Saisissez une expression à réduire :</label>
                 <input type="text" name="exprU" id="exprU" placeholder="ie. !A.!B.!C + !A.B.!C + A.!B.C..." required="required"/>
-                <button onclick="test2()">RÉDUCTION</button><br>
+                <button onclick="trad(lBlocs(graphe(tabK(tabExpr2(recupExpr())))[0],graphe()[1]))">RÉDUCTION</button><br>
                 <label for="ue">Choisir le procédé de résolution:</label><br>
-                <input type="checkbox" name="correK" id="correK" onchange="affichageTabK()">
+                <input type="checkbox" name="correK" id="correK" onchange="affichageTabK(tabKStr(tabK(tabExpr2(recupExpr()))))">
                 <label for="correK">Affichage des tables de Karnaugh</label>
             </div>
         
             <div>
-            <label id="tableKar"></label>
-            
-    </div>  
+                <label id="exprRed"></label>
+                <label id="tableKar"></label>            
+            </div>  
 
 </body>
 </html>
