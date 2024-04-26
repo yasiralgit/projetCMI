@@ -300,13 +300,9 @@ function tabKStr(tabKar){
  * @param {string} tkS - la sortie de la fonction tabKStr, donc table de Karnaugh sous forme de chaîne de caractères
  */
 function affichageTabK(tkS) {
-    const cb = document.getElementById("correK").checked;
-    const it = document.getElementById("exprU").clicked;
     const exp = recupExpr();
-    if (cb == true&&verifExpr(recupExpr())){ //on vérifie que la checkbox est bien cochée
-        if (exp != ''){ //on vérifie que l'utilisateur a bien entré une expression
-            tableKar.innerHTML = tkS; 
-        }
+    if (exp != ''){ //on vérifie que l'utilisateur a bien entré une expression
+        tableKar.innerHTML = tkS; 
     }
     else{ //sinon on cache la table de Karnaugh
         tableKar.innerHTML = "";
@@ -495,6 +491,9 @@ function appelsHtml(){
     }
 }
 
+/**
+ * Fonction qui ordonne les appels de chaques fonctions/procédures après avoir vérifié la validité de l'expression, selon si l'utilisateur à cliqué sur le bouton d'affichage de la table de Karnaugh dans la page HTML
+ */
 function appelsKar(){
     affErr.innerHTML = "";
     if (verifExpr(recupExpr())){//l'expression est correcte
