@@ -165,7 +165,7 @@ function sectET(expr){
     return sousProds
 }
 
-test = "!A.B.C.D + !A.!B.C.!D + A.B.C.D + A.B.!C.D"
+//test = "!A.B.C.D + !A.!B.C.!D + A.B.C.D + A.B.!C.D"
 function tabExpr(expr){
     if (prod(expr)){
         sp = sectET(expr);
@@ -465,11 +465,13 @@ function trad(listeBlocs){
 
 
 
-gTest = graphe(testKar)[0];
+/**gTest = graphe(testKar)[0];
 aTraiterTest = graphe(testKar)[1];
 console.log(gTest);console.log(aTraiterTest);
 lBlocsTest = lBlocs(gTest,aTraiterTest);
-console.log(trad(lBlocsTest));
+console.log(trad(lBlocsTest));*/
+
+trad(lBlocs(graphe(tabK(tabExpr2(recupExpr())))[0],graphe(tabK(tabExpr2(recupExpr())))[1]));
 
 
 
