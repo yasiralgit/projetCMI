@@ -14,6 +14,7 @@
 </head>
 
 <body>
+  <!--la navbar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="test2.html"><img src="p_not.png" width="30" height="30" class="d-inline-block align-top" alt="">S.E.B</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,6 +42,7 @@
     </nav>
     <h1>Notion d'électronique logique</h1>
     <hr>
+    <!--fil d'arianne-->
     <center>
     <h2 id="som">Sommaire</h2>
     <a href="#intro">Introduction<br></a>
@@ -49,33 +51,31 @@
     <a href="#table">Table de Karnaugh<br></a>
     </center>
     <hr>
+    <!--partie introduction-->
     <div id="intro">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <!--<img id="GB" src="George_Boole_color.jpg" alt="">-->
               <h1 class="display-4" id="intro">Introduction</h1>
               <p class="lead">George Boole (1815-1864),logicien, mathématicien et philosophe britannique, est à l'origine de l'algèbre de Boole. En électronique, on utilise l'algèbre de Boole avec deux états logique pour représenter les circuits. Le premier état est représenté par un 1 et indique que le courant passe, le deuxième est représenté par un 0 et indique que le courant ne passe pas.</p>
             </div>
           </div>
-    <!--<h2 id="intro">Introduction</h2>
-    <h>George Boole (1815-1864),logicien, mathématicien et philosophe britannique, est à l'origine de l'algèbre de Boole. En électronique, on utilise l'algèbre de Boole avec deux états logique pour représenter les circuits. Le premier état est représenté par un 1 et indique que le courant passe, le deuxième est représenté par un 0 et indique que le courant ne passe pas.</h> -->
     </div>
     <hr>
+    <!--partie bouton-->
     <h2 id="notation">Notation d'opérateur<br></h2>
     <p>
         <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Porte ET</a>
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Porte OU</button>
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Inverseur NOT</button>
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample4" aria-expanded="false" aria-controls="multiCollapseExample4">Porte XOR</button>
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Tout</button>
       </p>
       <div class="row">
         <div class="col">
           <div class="collapse multi-collapse" id="multiCollapseExample1">
             <div class="card card-body">
                 <div id="ET">
-                <h3>Opérateur et <span class="badge badge-secondary">.</span></h3>
-                <h id="et">Le ET logique renvoie un 1 si l'ensemble de ses entrées sont à 1. Le ET à généralement deux entrées mais peut en avoir plus. Il est représenté par le symbole ".".
+                <h3>Opérateur ET <span class="badge badge-secondary">.</span></h3>
+                <h id="et">Le ET logique renvoie un 1 si l'ensemble de ses entrées sont à 1. Le ET a généralement deux entrées mais peut en avoir plus. Il est représenté par le symbole ".".
                 </h>
                 <img id="photo_et" src="tv_et.png"/>
                 <img id="photo_et2" src="p_et.png"/>
@@ -91,8 +91,8 @@
           <div class="collapse multi-collapse" id="multiCollapseExample2">
             <div class="card card-body">
                 <div id="OU">
-                    <h3>Opérateur ou <span class="badge badge-secondary">+</span></h3>
-                    <h id="ou">Le OU logique renvoie un 1 si au moins une de ses entrées est à 1. Le OU à généralement deux entrées mais peut en avoir plus.Il est représenté par le symbole "+".</h>
+                    <h3>Opérateur OU <span class="badge badge-secondary">+</span></h3>
+                    <h id="ou">Le OU logique renvoie un 1 si au moins une de ses entrées est à 1. Le OU a généralement deux entrées mais peut en avoir plus. Il est représenté par le symbole "+".</h>
                     <img id="photo_ou" src="tv_ou.png"/>
                     <img id="photo_ou2" src="p_ou.png"/>
                     <br>
@@ -108,7 +108,7 @@
               <div class="card card-body">
                 <div id="NOT">
                 <h3>L'inverseur logique <span class="badge badge-secondary">!</span></h3>
-                <h id="not">Le NOT logique inverse la valeur qu'il reçois en entré, il reçois une seule valeur. Il peut être représenté par le symbole "!" ou par une barre au-dessus de la partie de l'expréssion corespondante.</h>
+                <h id="not">Le NOT logique inverse l'expression qu'il reçoit en entrée. Il est représenté par le symbole "!".</h>
                 <img id="photo_not" src="tv_not.png"/>
                 <img id="photo_not2" src="p_not.png"/>
                 <br>
@@ -118,14 +118,13 @@
                 </div>
               </div>
             </div>
-          </div>
       </div>
       <div class="col">
         <div class="collapse multi-collapse" id="multiCollapseExample4">
           <div class="card card-body">
             <div id="XOR">
-                <h3>Opérateur XOR <span class="badge badge-secondary">XOR</span></h3>
-                <h id="xor">Le OU exclusif logique renvoie un 1 si il y a uniquement une entrée à 1. Le OU exclusif à généralement deux entrées mais peut en avoir plus.Il est représenté par le symbole "*".</h>
+                <h3>Opérateur XOR <span class="badge badge-secondary">*</span></h3>
+                <h id="xor">Le OU exclusif logique (XOR) renvoie un 1 si uniquement une de ses entrées est à 1. Le OU exclusif a généralement deux entrées mais peut en avoir plus.Il est représenté par le symbole "*".</h>
                 <img id="photo_xor" src="tv_xor.png"/>
                 <img id="photo_xor2" src="p_xor.png"/>
                 <br>
@@ -137,52 +136,6 @@
         </div>
       </div>
   </div>
-  <!--
-    <div id="notOp">
-    
-    <div id="ET">
-    <h3>Opérateur et <span class="badge badge-secondary">.</span></h3>
-    <h id="et">Le ET logique renvoie un 1 si l'ensemble de ses entrées sont à 1. Le ET à généralement deux entrées mais peut en avoir plus. Il est représenté par le symbole ".".
-    </h>
-    <img id="photo_et" src="tv_et.png"/>
-    <img id="photo_et2" src="p_et.png"/>
-    <br>
-    <br>
-    <br>
-    <br>
-    </div>
-    <div id="OU">
-    <h3>Opérateur ou <span class="badge badge-secondary">+</span></h3>
-    <h id="ou">Le OU logique renvoie un 1 si au moins une de ses entrées est à 1. Le OU à généralement deux entrées mais peut en avoir plus.Il est représenté par le symbole "+".</h>
-    <img id="photo_ou" src="tv_ou.png"/>
-    <img id="photo_ou2" src="p_ou.png"/>
-    <br>
-    <br>
-    <br>
-    <br>
-    </div>
-    <div id="NOT">
-    <h3>L'inverseur logique <span class="badge badge-secondary">!</span></h3>
-    <h id="not">Le NOT logique inverse la valeur qu'il reçois en entré, il reçois une seule valeur. Il peut être représenté par le symbole "!" ou par une barre au-dessus de la partie de l'expréssion corespondante.</h>
-    <img id="photo_not" src="tv_not.png"/>
-    <img id="photo_not2" src="p_not.png"/>
-    <br>
-    <br>
-    <br>
-    <br>
-    </div>
-    <div id="XOR">
-    <h3>Opérateur XOR <span class="badge badge-secondary">XOR</span></h3>
-    <h id="xor">Le OU exclusif logique renvoie un 1 si il y a uniquement une entrée à 1. Le OU exclusif à généralement deux entrées mais peut en avoir plus.Il est représenté par le symbole "*".</h>
-    <img id="photo_xor" src="tv_xor.png"/>
-    <img id="photo_xor2" src="p_xor.png"/>
-    <br>
-    <br>
-    <br>
-    <br>
-    </div>
-    </div>
-    -->
     <hr>
     <h2 id="theoreme">Théorèmes et propriétés booléennes</h2>
     <p>
@@ -196,7 +149,6 @@
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample12" aria-expanded="false" aria-controls="multiCollapseExample12"> Distributivité</button> 
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample13" aria-expanded="false" aria-controls="multiCollapseExample13"> Absorption</button>
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample14" aria-expanded="false" aria-controls="multiCollapseExample14"> Théorème de De Morgan</button>
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample5 multiCollapseExample6">Tout</button>
       </p>
       <div class="row">
         <div class="col">
@@ -334,99 +286,17 @@
         </div>
   </div>
   <hr>
-  <!--
-    <div id="theoreme">
-    <h2 id="theoreme">Théorème et propriétés booléennes</h2>
-    
-    <h3>Propriétés des OU et des ET logique:</h3>
-    <div id="Idempotence">
-    <h4>Idempotence:</h4>
-    <h>Pour le OU: A+A=A
-        <br>
-        Pour le ET: A.A=A
-    </h>
-    </div>
-    <div id="Commutativité">
-    <h4>Commutativité:</h4>
-    <h>Pour le OU: A+B=B+A
-        <br>
-        Pour le ET: A.B=B.A
-    </h>
-    </div>
-    <div id="Associativité">  
-    <h4>Associativité:</h4>
-    <h>Pour le OU: A+(B+C)=(A+B)+C=(A+C)+B
-        <br>
-        Pour le ET: A.(B.C)=(A.B).C=(A.C).B
-    </h>
-    </div>
-    <div id="EltN">
-    <h4>Elément neutre:</h4>
-    <h>Pour le OU: A+0=A
-        <br>
-        Pour le ET: A.1=A
-    </h>
-    </div>
-    <div id="Complémentarité">
-    <h4>Complémentarité:</h4>
-    <h>Pour le OU: A+!A=1
-        <br>
-        Pour le ET: A.!A=0
-    </h>
-    </div>
-    <div id="EltA">
-    <h3>Elément absorbant:</h3>
-    <h>Pour le OU: A+1=1
-        <br>
-        Pour le ET: A.0=0
-    </h>
-    </div>
-    <h4>Propriétés générales:</h4>
-    <div id="Involution">
-    <h4>Involution:</h4>
-    <h>!(!A)=A</h>
-    </div>
-    <div id="Distributivité">
-    <h4>Distributivité:</h4>
-    <h>A.(B+C)=A.B+A.C
-        <br>
-        A+(B.C)=(A+B).(A+C)
-    </h>
-    </div>
-    <div id="Absorption">
-    <h4>Absorption:</h4>
-    A+A.B=A
-    <br>
-    A.(A+B)=A
-    <br>
-    A+!A.B=A+B
-    </div>
-    <div id="Morgan">
-    <h4>Théorème de "de Morgan":</h4>
-    <h>!(A.B)=!A+!B
-        <br>
-        !(A+B)=!A.!B
-    </h>
-    </div>
-    </div>
-    -->
+  <!--partie table de Karnaugh-->
     <div id="tbKarn">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <!--<img id="GB" src="George_Boole_color.jpg" alt="">-->
               <h1 class="display-4" id="intro">Table de Karnaugh</h1>
-              <p class="lead" id="table">La table de Karnaugh est une méthode de réduction d'une équation logique. Cette méthode consiste a ordoner une table de véritée pour mettre en évidence les simplifications.Il faut faire un tableau en répartissant la moitié des entrées sur l'axe des abscisse et l'autre moitié sur l'axe des ordonnées puis reporter les 1 et les 0 dans les bonnes case.La table de Karnaugh étant circulaire, il faut qu'il y est une différence de un bit entre chaque colonnes/ligne adjacentes. Il faut réunire les 1 dans des groupe de la plus grande puissance de 2 possible, pour cela les 1 doivent formmer un rectangle, comme la table est circulaire on peut relier la première colonne/ligne avec la dernière.</p>
-              <table class = 'table'><thead><tr><th>AB/CD</th><th>00</th><th>01</th><th>11</th><th>10</th> </tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>0</td> </tr><tr><th>01</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>11</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>10</th><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>"
+              <p class="lead" id="table">La table de Karnaugh est une méthode de réduction d'une expression logique. Cette méthode consiste a ordoner une table de vérité pour mettre en évidence les simplifications de la manière représentée ci dessous. Il suffit de reporter les 1 dans les bonnes cases. Pour ensuite regrouper ces 1 en les plus grands rectangles de puissance de 2 possible, comme la table est circulaire on peut relier la première colonne/ligne avec la dernière. Chacun de ces groupes nous donne l'expression la plus simplifiée qui compose l'expression.</p>
+              <table class = 'table'><thead><tr><th>AB/CD</th><th>00</th><th>01</th><th>11</th><th>10</th> </tr></thead><tbody><tr><th>00</th><td>0</td><td>0</td><td>0</td><td>0</td> </tr><tr><th>01</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>11</th><td>0</td><td>0</td><td>0</td><td>0</td>    </tr><tr><th>10</th><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>
             </div>
           </div>
-
-    <!--
-    <h2>Table de Karnaugh</h2>
-    <h id="table">La table de Karnaugh est une méthode de réduction d'une équation logique. Cette méthode consiste a ordoner une table de véritée pour mettre en évidence les simplifications.Il faut faire un tableau en répartissant la moitié des entrées sur l'axe des abscisse et l'autre moitié sur l'axe des ordonnées puis reporter les 1 et les 0 dans les bonnes case.La table de Karnaugh étant circulaire, il faut qu'il y est une différence de un bit entre chaque colonnes/ligne adjacentes. Il faut réunire les 1 dans des groupe de la plus grande puissance de 2 possible, pour cela les 1 doivent formmer un rectangle, comme la table est circulaire on peut relier la première colonne/ligne avec la dernière.</h>
-    <img id="photo_karnaugh" src="karnaugh.png"/>
-    </div> -->
     <center><button type="button" class="btn btn-outline-primary" onclick="window.location.href='entrainement.html';">S'exercer</button></center>
-
+<!--imports js-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 crossorigin="anonymous"></script>

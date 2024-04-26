@@ -4,11 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="http://localhost:8888/fichier/style.css" />
   <script src="entrainement.js" defer></script>
-  <link href="http://localhost:8888/fichier/bootstrap.min.css" rel="stylesheet"> 
-  <script src="http://localhost:8888/fichier/jquery.js"></script>
-  <script src="http://localhost:8888/fichier/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
   integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <title>S.E.B</title>
@@ -16,93 +12,82 @@
 </head>
 
 <body>
+  <!--la navbar-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="test2.html"><img src="p_not.png" width="30" height="30" class="d-inline-block align-top" alt="">S.E.B</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="main.html">Accueil <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="page_cour.html">Cours</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="entrainement.html">Entrainement</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="reductionOrdi.html">Résolution</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-        </ul>
-      </div>
-</nav>
-<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-  <select class="form-select" aria-label="Default select example">
-    <option selected>Choisir la difficulté des expressions</option>
-    <option value="1">Facile</option>
-    <option value="2">Intermédiaire</option>
-    <option value="3">Difficile</option>
-  </select>
-  <div class="Premiere-partie">
-    <!--<h1>
-      <center>Entrainement</center>
-    </h1>-->
-    <center>    
-      <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
-      <div class="card-header"><h3>Entrainement</h3></div>
-      <div class="card-body">
-        
-        <p class="card-text">Essayez de réduire l'expression qui vous est proposé. Si vous n'y arrivez pas alors il faudrait peut-etre repasser au coté cours !!</p>
-      </div>
-      
+    <a class="navbar-brand" href="test2.html"><img src="p_not.png" width="30" height="30"
+        class="d-inline-block align-top" alt="">S.E.B</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="test2.html">Accueil <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="page_cour.html">Cours</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="entrainement.html">Entrainement</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="reductionOrdi.html">Résolution</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul>
     </div>
-      <!--<label> Essayez de réduire cette expression : </label> <br>--> <label for="exp" id="exp"></label><br><!--<button type='submit'
-      onclick="changerExp()" name='case' value=$key>CHANGER</button><br> <br>-->
-    <input type="text" placeholder="i.e. !A.!B.!C + !A.B.!C + !A.B.C ..." name="expin" id="expin"> <br><br><!--<button onclick="affExp()" type='button' name='correc'
-      >CORRECTION</button>--></center><br></p>
-
-    <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-
-      <button type="button" class="btn btn-danger" onclick="affExp()">Correction</button>
-
-      <button type="button" class="btn btn-primary" onclick="affKarnaugh(this)">Table de Karnaugh</button>
-      <button type="button" class="btn btn-primary" onclick="affTheo(this)">Théorèmes</button>
-      <button type="button" class="btn btn-outline-primary" onclick="changerExp()">Changer d'expression</button>
-      <button type="button" class="btn btn-outline-primary" onclick="window.location.href='page_cour.html';">Revenir au cours</button>
-      <button type="button" class="btn btn-outline-primary" onclick="window.location.href='reductionOrdi.html';">Passer à la résolution</button>
-
-    </div>
-    
-    <label for="correcExp" id="correcExp"></label>
-    <div id="tabExp"></div>
-    <div id="tabTheo"></div> 
-    <!--<label for="choix1"><small>Afficher la table de Karnaugh</small><input type="checkbox"
-        name="choix[]" value="karnaugh" onchange="affKarnaugh(this)" ></label><br>
-    <div id="tabExp"></div>
-    <label for="choix2"><small>Afficher les théorèmes </small><input type="checkbox"
-      name="choix[]" value="theo" onchange="affTheo(this)" ></label><br>
-    <div id="tabTheo"></div> -->
-        <!--<label for="choix2"><small>Afficher un exemple </small><input type="checkbox" onchange="afficheTab(this)" 
-          name="choix[]" value="bool" ></label><br>
-          <label for="choix2"><small>TEST DE FONCTION </small><input type="checkbox" onchange="kar2exp()" 
-            name="choix[]" value="bool" ></label><br> </center>-->
+  </nav>
+  <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+    <select class="form-select" aria-label="Default select example" id="dif">
+      <option selected value="0">Facile</option>
+      <option value="1">Intermédiaire</option>
+      <option value="2">Difficile</option>
+    </select>
   </div>
-  
-  <!--<div><button class="butp" onclick="window.location.href='http://localhost:8888/fichier/main.html';">Retour à l'écran d'accueil</button></div>-->
+  <center> <!--la card centrale-->
+    <div class="card text-bg-primary mb-3" >
+      <div class="card-header">
+        <h3>Entrainement</h3>
+      </div>
+      <div class="card-body">
+        <p class="card-text">Essayez de réduire l'expression qui vous est proposé. Si vous n'y arrivez pas alors il
+          faudrait peut-etre repasser au coté cours !!</p>
+      </div>
+      <div>
+        <input type="text" placeholder="i.e. !A.!B.!C + !A.B.!C + !A.B.C ..." name="expin" id="expin"> <br><br>
+      </div>
+      <div>
+        <label for="exp" id="exp"></label><br>
+      </div>
+    </div>
+  </center>
+  <!--les boutons-->
+  <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+    <button type="button" class="btn btn-danger" onclick="affExp()">Correction</button>
+    <button type="button" class="btn btn-primary" onclick="affKarnaugh(this)">Table de Karnaugh</button>
+    <button type="button" class="btn btn-primary" onclick="affTheo(this)">Théorèmes</button>
+    <button type="button" class="btn btn-outline-primary" onclick="changerExp()">Changer d'expression</button>
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href='page_cour.html';">Revenir
+      au cours</button>
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href='reductionOrdi.html';">Passer
+      à la résolution</button>
+  </div>
+  <label for="correcExp" id="correcExp"></label>
+  <div id="tabExp"></div>
+  <div id="tabTheo"></div>
+  </div>
+  <!--import des ressources js-->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-  crossorigin="anonymous"></script>
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-  crossorigin="anonymous"></script>
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-  crossorigin="anonymous"></script>
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 </body>
-
 </html>
