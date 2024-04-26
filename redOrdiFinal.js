@@ -489,6 +489,15 @@ function appelsHtml(){
     affErr.innerHTML = "";
     if (verifExpr(recupExpr())){//l'expression est correcte
         trad(lBlocs(listeAdj(tabK(tabExpr(recupExpr())))[0],listeAdj(tabK(tabExpr(recupExpr())))[1]));
+    }
+    else{//elle ne l'est pas donc message d'erreur
+        affErr.innerHTML = "Problème avec l'expression saisie. Veuillez respecter les contraintes demandées."
+    }
+}
+
+function appelsKar(){
+    affErr.innerHTML = "";
+    if (verifExpr(recupExpr())){//l'expression est correcte
         affichageTabK(tabKStr(tabK(tabExpr(recupExpr()))));
     }
     else{//elle ne l'est pas donc message d'erreur
