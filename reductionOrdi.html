@@ -5,16 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>S.E.B</title>
-  <script src="redOrdiFinal.js"></script>
+  <script src="redOrdi.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="shortcut icon" href="p_not.png">
+  <link rel="shortcut icon" href="img/not.png">
 </head>
 
 <body>
   <!--la navbar-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="test2.html"><img src="p_not.png" width="30" height="30"
+    <a class="navbar-brand" href="accueil.html"><img src="img/not.png" width="30" height="30"
         class="d-inline-block align-top" alt="">S.E.B</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,19 +23,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="test2.html">Accueil <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="accueil.html">Accueil <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="page_cour.html">Cours</a>
+          <a class="nav-link" href="cours.html">Cours</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="entrainement.html">Entrainement</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="reductionOrdi.html">Résolution</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
         </li>
       </ul>
     </div>
@@ -47,14 +44,15 @@
         <h3>Réduction de votre expression</h3>
       </div>
       <div class="card-body ">
-        <p class="card-text ">Inserez une expression et c'est maintenant à nous de la réduire.</p>
+        <p class="card-text ">Insérez une expression et c'est maintenant à nous de la réduire.</p>
       </div>
       <div>
-        <input type="text" name="exprU" id="exprU" placeholder="ie. !A.!B.!C + !A.B.!C + A.!B.C..."
+        <input type="text" name="exprU" id="exprU" placeholder="ie. !A.!B.!C.D + !A.B.!C.!D + A.!B.C.D..."
           required="required" /><br> <br>
       </div>
       <div>
-        <label id="expRed"></label>
+        <label id="affErr"></label>
+        <label id="exprRed"></label>
         <label id="tableKar"></label>
       </div>
     </div>
@@ -62,8 +60,8 @@
   <!--les boutons-->
   <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
     <button type="button" class="btn btn-primary"
-      onclick="trad(lBlocs(graphe(tabK(tabExpr2(recupExpr())))[0],graphe(tabK(tabExpr2(recupExpr())))[1]));">Résolution</button>
-    <button type="button" class="btn btn-primary" onclick="affichageTabK(tabKStr(tabK(tabExpr2(recupExpr()))))">Table de
+      onclick="appelsHtml()">Réduction</button>
+    <button type="button" class="btn btn-primary" onclick="appelsKar()">Table de
       Karnaugh</button>
 
   </div>

@@ -8,13 +8,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
   integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <title>S.E.B</title>
-  <link rel="shortcut icon" href="p_not.png">
+  <link rel="shortcut icon" href="img/not.png">
 </head>
 
 <body>
   <!--la navbar-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="test2.html"><img src="p_not.png" width="30" height="30"
+    <a class="navbar-brand" href="accueil.html"><img src="img/not.png" width="30" height="30"
         class="d-inline-block align-top" alt="">S.E.B</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,19 +23,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="test2.html">Accueil <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="accueil.html">Accueil <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="page_cour.html">Cours</a>
+          <a class="nav-link" href="cours.html">Cours</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="entrainement.html">Entrainement</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="reductionOrdi.html">Résolution</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
         </li>
       </ul>
     </div>
@@ -53,11 +50,11 @@
         <h3>Entrainement</h3>
       </div>
       <div class="card-body">
-        <p class="card-text">Essayez de réduire l'expression qui vous est proposé. Si vous n'y arrivez pas alors il
+        <p class="card-text">Essayez de réduire l'expression qui vous est proposée. Si vous n'y arrivez pas alors il
           faudrait peut-etre repasser au coté cours !!</p>
       </div>
       <div>
-        <input type="text" placeholder="i.e. !A.!B.!C + !A.B.!C + !A.B.C ..." name="expin" id="expin"> <br><br>
+        <input type="text" placeholder="i.e. !A.!B.!C.D + !A.B.!C.D + !A.B.C.D ..." name="expin" id="expin"> <br><br>
       </div>
       <div>
         <label for="exp" id="exp"></label><br>
@@ -70,7 +67,7 @@
     <button type="button" class="btn btn-primary" onclick="affKarnaugh(this)">Table de Karnaugh</button>
     <button type="button" class="btn btn-primary" onclick="affTheo(this)">Théorèmes</button>
     <button type="button" class="btn btn-outline-primary" onclick="changerExp()">Changer d'expression</button>
-    <button type="button" class="btn btn-outline-primary" onclick="window.location.href='page_cour.html';">Revenir
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href='cours.html';">Revenir
       au cours</button>
     <button type="button" class="btn btn-outline-primary" onclick="window.location.href='reductionOrdi.html';">Passer
       à la résolution</button>
