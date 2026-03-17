@@ -39,7 +39,6 @@ cd projetCMI
 open index.html
 ```
 
-Or visit the live demo: [yasiralgit.github.io/projetCMI](https://yasiralgit.github.io/projetCMI) (if GitHub Pages is enabled).
 
 ---
 
